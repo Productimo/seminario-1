@@ -23,7 +23,7 @@ export default function AppBar(){
             <ListItem sx={{padding:0}}>
                 <Button variant="outlined" color="primary" sx={{borderRadius:0,width:'100%', height:30, display:'flex', justifyContent:'left'}}> 
                     <HealingIcon sx={{color:'yellowgreen'}}/>
-                    <Typography sx={{ml:'40%', fontWeight:'bold', color:'yellowgreen'}}>Hemodinamia</Typography>
+                    <Typography sx={{fontWeight:'bold', color:'yellowgreen', paddingRight:0}}>Hemodinamia</Typography>
                 </Button>
             </ListItem>
         
