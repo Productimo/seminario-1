@@ -1,0 +1,5 @@
+com\challange\tenpo\services\AuthServiceTest.class
+com\challange\tenpo\services\CalculatorServiceImplTest.class
+com\challange\tenpo\services\HistoryServiceImplTest.class
+com\challange\tenpo\services\UserLogedCacheTest.class
+com\challange\tenpo\services\UserServiceImplTest.class
