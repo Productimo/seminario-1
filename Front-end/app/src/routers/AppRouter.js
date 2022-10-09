@@ -8,6 +8,7 @@ export default function AppRouter(){
     return(
         <Routes>
             <Route path='/' element={<Home/>}/>
+            <Route path='/Home' element={<Home/>}/>
             <Route path='/Form' element={<Form/>}/>
             <Route path='/Dashboard' element={<Dashboard/>}/>
         </Routes>    

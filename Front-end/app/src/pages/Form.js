@@ -181,7 +181,7 @@ export default function Form(){
                     </Grid>
                     <Grid item xs={2}>
                         <Button variant="contained" sx={{height:'100%',bgcolor:'yellow', color:'black'}}>
-                            DESCARGAR VISTA PREVIA
+                            VISTA PREVIA
                         </Button>
                     </Grid>
                 </Grid>
