@@ -10,7 +10,31 @@ import Data from '../pages/Data.json'
 import LocalHospitalIcon from '@mui/icons-material/LocalHospital';
 import VaccinesIcon from '@mui/icons-material/Vaccines';
 import Button from "@mui/material/Button";
+import { alpha, styled } from '@mui/material/styles';
+import uuid from 'react-uuid';
 
+const CssTextField = styled(TextField)({
+    '& label.Mui-focused': {
+      color: 'green',
+    },
+    '& label':{
+        color:'yellow',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: 'green',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: 'red',
+      },
+      '&:hover fieldset': {
+        borderColor: 'yellow',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: 'yellow',
+      },
+    },
+  });
 
 export default function Form(){
 
@@ -35,12 +59,11 @@ export default function Form(){
     const[hospital_urgencia, setHospitalUrgencia]=useState('')
     const[cant_ampollas, setCantAmpollas]=useState('')
     const[comentarios, setComentarios]=useState('')
-    
     const[formulario,setFormulario] = useState({})
 
     const handleSubmit = ()=>{
         setFormulario({
-            dni_paciente:dni_paciente,
+            // dni_paciente:dni_paciente,
             nombre_paciente:nombre_paciente,
             cod_medicamento:cod_medicamento,
             hospital_urgencia:hospital_urgencia,
@@ -50,20 +73,23 @@ export default function Form(){
     }
 
     console.log(formulario)
+
+    
+      
     
     return(
         <Container sx={{display:"flex", bgcolor:'#0A1929', minWidth:'100%'}} disableGutters>
             <AppBar/>
-            <Box sx={{width:'100%', bgcolor:'#5468ff'}}>
+            <Box sx={{width:'100%', bgcolor:'#0A1936'}}>
                 <Grid container spacing={2} sx={{width:'30%', margin:1}} columns={4}>
                     <Grid item xs={2}>
-                    <TextField
-                        id="input-with-icon-textfield"
+                    <CssTextField
                         label="DNI paciente"
+                        id="input-with-icon-textfield"
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
-                                <BadgeIcon/>
+                                <BadgeIcon  sx={{color:'yellow'}}/>
                             </InputAdornment>
                             ),
                         }}
@@ -72,13 +98,13 @@ export default function Form(){
                     />
                     </Grid>
                     <Grid item xs={2}>
-                    <TextField
+                    <CssTextField
                         id="input-with-icon-textfield"
                         label="Nombre paciente"
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
-                                <AccountCircle />
+                                <AccountCircle   sx={{color:'yellow'}}/>
                             </InputAdornment>
                             ),
                         }}
@@ -88,13 +114,14 @@ export default function Form(){
                     />
                     </Grid>
                     <Grid item xs={2}>
-                    <TextField
-                        id="outlined-error"
-                        label="Hospital en el que se atendio"
+                    <CssTextField
+                        id="outlined"
+                        label={"Hospital en el que se atendio"}
+                        Input
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
-                                <LocalHospitalIcon />
+                                <LocalHospitalIcon   sx={{color:'yellow'}}/>
                             </InputAdornment>
                             ),
                         }}
@@ -104,13 +131,13 @@ export default function Form(){
                     />
                     </Grid>
                     <Grid item xs={2}>
-                    <TextField
+                    <CssTextField
                         id="outlined-error"
                         label="codigo medicamento"
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
-                                <VaccinesIcon/>
+                                <VaccinesIcon  sx={{color:'yellow'}}/>
                             </InputAdornment>
                             ),
                         }}
@@ -120,13 +147,13 @@ export default function Form(){
                     />
                     </Grid>
                     <Grid item xs={2}>
-                    <TextField
+                    <CssTextField
                         id="outlined-error"
                         label="cantidad de ampollas"
                         InputProps={{
                             startAdornment: (
                             <InputAdornment position="start">
-                                <LocalHospitalIcon />
+                                <LocalHospitalIcon   sx={{color:'yellow'}}/>
                             </InputAdornment>
                             ),
                         }}
@@ -136,8 +163,8 @@ export default function Form(){
                     />
                     </Grid>
                     <Grid item xs={2}>
-                        <TextField
-                            id="outlined-textarea"
+                        <CssTextField
+                            id="custom-css-outlined-input"
                             label="Comentarios"
                             
                             multiline
