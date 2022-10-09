@@ -38,6 +38,8 @@ const CssTextField = styled(TextField)({
 
 export default function Form(){
 
+    
+
     /*console.log(dataObj.DNI_paciente) esto me permite obtener un array con los dnis de los pacientes
     const dnis_pacientes = () => {
         
@@ -64,6 +66,8 @@ export default function Form(){
     const handleSubmit = ()=>{
         setFormulario({
             // dni_paciente:dni_paciente,
+            id_medico:uuid(),
+            id_formulario:uuid(),
             nombre_paciente:nombre_paciente,
             cod_medicamento:cod_medicamento,
             hospital_urgencia:hospital_urgencia,
@@ -73,10 +77,7 @@ export default function Form(){
     }
 
     console.log(formulario)
-
-    
-      
-    
+   
     return(
         <Container sx={{display:"flex", bgcolor:'#0A1929', minWidth:'100%'}} disableGutters>
             <AppBar/>
