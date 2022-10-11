@@ -8,7 +8,6 @@ import com.seminario.exceptions.NegativeParamException;
 import com.seminario.repositories.HistoryRepository;
 import com.seminario.services.HistoryService;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

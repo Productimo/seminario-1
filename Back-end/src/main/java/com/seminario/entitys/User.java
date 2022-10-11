@@ -5,11 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.ManyToAny;
 
 @Entity
 @Table(name = "Users")
@@ -28,8 +24,6 @@ public class User {
     @Column(name = "email", unique = true)
     private String email;
     
-    @ManyToOne
-    private UserRol rol;
 
     public User(String username, String password, String email) {
         this.username = username;
@@ -72,13 +66,4 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
-	public UserRol getRol() {
-		return rol;
-	}
-
-	public void setRol(UserRol rol) {
-		this.rol = rol;
-	}
-	
 }

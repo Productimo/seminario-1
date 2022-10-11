@@ -10,7 +10,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static com.seminario.config.Consts.TOKEN;
 import static com.seminario.config.Consts.SECRET_KEY;
 import static java.util.Arrays.stream;
 import java.util.Collection;

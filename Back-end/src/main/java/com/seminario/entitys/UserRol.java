@@ -15,7 +15,7 @@ public class UserRol {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 	
-	 @Column(name = "rol", unique = true)
+	 @Column(name = "rol")
 	 private String rol;
 
 	public Long getId() {
