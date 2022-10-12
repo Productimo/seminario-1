@@ -1,0 +1,5 @@
+com\seminario\services\UserLogedCacheTest.class
+com\seminario\services\UserServiceImplTest.class
+com\seminario\services\AuthServiceTest.class
+com\seminario\services\CalculatorServiceImplTest.class
+com\seminario\services\HistoryServiceImplTest.class

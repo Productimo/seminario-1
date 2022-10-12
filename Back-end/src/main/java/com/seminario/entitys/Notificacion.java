@@ -22,10 +22,10 @@ public class Notificacion {
     @JoinColumn(name = "id_pedido", referencedColumnName = "id")
     private Pedido pedido;
 	
-	@Column(name = "fecha_pedido")
+	@Column(name = "texto")
 	private String texto;
 	
-	@Column(name = "fecha_pedido")
+	@Column(name = "visto")
 	private Boolean visto;
 
 	public Long getId() {

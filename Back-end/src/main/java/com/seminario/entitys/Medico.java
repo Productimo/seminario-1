@@ -17,8 +17,8 @@ public class Medico {
 	@Id
 	private Integer dni;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
-	private List<Hospital> hospitales;
+	//@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
+	//private List<Hospital> hospitales;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -35,14 +35,6 @@ public class Medico {
 
 	public void setDni(Integer dni) {
 		this.dni = dni;
-	}
-
-	public List<Hospital> getHospitales() {
-		return hospitales;
-	}
-
-	public void setHospitales(List<Hospital> hospitales) {
-		this.hospitales = hospitales;
 	}
 
 	public String getNombre() {

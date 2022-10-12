@@ -28,10 +28,10 @@ public class Hospital {
 	@JoinColumn(name = "id_area", nullable = false)
 	private Area area;
 
-	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	@JoinTable(name = "hopital_medico", joinColumns = { @JoinColumn(name = "id_hopital") }, inverseJoinColumns = {
-			@JoinColumn(name = "id_medico") })
-	private Set<Medico> medicos;
+	//@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	//@JoinTable(name = "hopital_medico", joinColumns = { @JoinColumn(name = "id_hopital") }, inverseJoinColumns = {
+	//		@JoinColumn(name = "id_medico") })
+	//private Set<Medico> medicos;
 
 	@OneToMany(mappedBy="hospital")
     private Set<Stock> stockByMedicamento;
@@ -56,14 +56,6 @@ public class Hospital {
 
 	public void setArea(Area area) {
 		this.area = area;
-	}
-
-	public Set<Medico> getMedicos() {
-		return medicos;
-	}
-
-	public void setMedicos(Set<Medico> medicos) {
-		this.medicos = medicos;
 	}
 
 	public String getNombre() {
