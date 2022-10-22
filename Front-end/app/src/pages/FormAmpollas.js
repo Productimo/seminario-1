@@ -3,17 +3,20 @@ import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import Alert from "@mui/material/Alert";
 import React, { useState } from "react";
+import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid, TextField } from "@mui/material";
 import BadgeIcon from "@mui/icons-material/Badge";
 import MenuDrawer from "../components/MenuDrawer";
+import LoadingButton from "@mui/lab/LoadingButton";
 import { AccountCircle } from "@mui/icons-material";
 import FormControl from "@mui/material/FormControl";
 import VaccinesIcon from "@mui/icons-material/Vaccines";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
 
 const boxShadowStyle = {
@@ -25,19 +28,33 @@ const boxShadowStyle = {
   marginTop: "80px",
 };
 
-export default function Form() {
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-25%, -50%)",
+  width: "auto",
+  bgcolor: "white",
+  boxShadow: 24,
+  p: 4,
+};
+
+export default function FormAmpollas() {
   const [dni_paciente, setDNI] = useState();
+  const [comentarios, setComentarios] = useState();
+  const [formulario, setFormulario] = useState({});
+  const [cant_ampollas, setCantAmpollas] = useState();
   const [nombre_paciente, setNombrePaciente] = useState();
   const [cod_medicamento, setCodMedicamento] = useState("");
   const [hospital_urgencia, setHospitalUrgencia] = useState("");
-  const [cant_ampollas, setCantAmpollas] = useState();
-  const [comentarios, setComentarios] = useState();
-  const [formulario, setFormulario] = useState({});
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = () => {
+  const [open, setOpen] = React.useState(false);
+  const [loading, setLoading] = React.useState(false);
+
+  const checkData = () => {
     if (
       !dni_paciente ||
       !nombre_paciente ||
@@ -48,19 +65,14 @@ export default function Form() {
       setErrorMessage("Por favor complete todos los datos");
       return setAlertOpen(true);
     }
-    setFormulario({
-      // dni_paciente:dni_paciente,
-      id_medico: uuid(),
-      id_formulario: uuid(),
-      nombre_paciente: nombre_paciente,
-      cod_medicamento: cod_medicamento,
-      hospital_urgencia: hospital_urgencia,
-      cant_ampollas: cant_ampollas,
-      comentarios: comentarios,
-    });
+    setOpen(true);
   };
 
-  console.log(formulario);
+  const handleSubmit = () => {
+    setLoading(true);
+    // TODO: Send data to backend
+    window.location.reload();
+  };
 
   return (
     <Container
@@ -176,9 +188,21 @@ export default function Form() {
               sx={{ width: "100%" }}
             />
           </Grid>
+          <Grid item xs={4}>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+            >
+              <AttachFileIcon sx={{ color: "teal" }} />
+              <Typography variant="span">Adjuntar archivo</Typography>
+            </div>
+          </Grid>
           <Grid item xs={4} sx={{ textAlign: "center" }}>
-            <Button variant="contained" onClick={handleSubmit}>
-              ENVIAR FORMULARIO
+            <Button variant="contained" onClick={checkData}>
+              CONTINUAR
             </Button>
           </Grid>
         </Grid>
@@ -194,6 +218,57 @@ export default function Form() {
           </Alert>
         </Snackbar>
       </Box>
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography variant="h6" component="h2">
+            Por favor verificá que los datos sean correctos
+          </Typography>
+          <Divider sx={{ marginTop: 1, marginBottom: 2 }} />
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            Nombre paciente: {nombre_paciente}
+          </Typography>
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            DNI paciente: {dni_paciente}
+          </Typography>
+          <br />
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            Hospital: {hospital_urgencia}
+          </Typography>
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            Medicamento utilizado: {cod_medicamento}
+          </Typography>
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            Ampollas utilizadas: {cant_ampollas}
+          </Typography>
+          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
+            Comentarios: {comentarios}
+          </Typography>
+          <br />
+          <Container sx={{ textAlign: "center" }}>
+            <Button
+              variant="outlined"
+              onClick={() => setOpen(false)}
+              sx={{ marginRight: 1, width: 170 }}
+            >
+              EDITAR
+            </Button>
+            <LoadingButton
+              variant="contained"
+              onClick={handleSubmit}
+              loading={loading}
+              sx={{ marginLeft: 1 }}
+            >
+              ENVIAR FORMULARIO
+            </LoadingButton>
+          </Container>
+        </Box>
+      </Modal>
     </Container>
   );
 }
