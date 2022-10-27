@@ -19,6 +19,9 @@ public class Stock {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name = "id_hospital")
+	private Long idHospital;
+	
 	@ManyToOne
     @JoinColumn(name="id_hospital", nullable=false)
     private Hospital hospital;
