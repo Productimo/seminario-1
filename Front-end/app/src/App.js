@@ -1,12 +1,10 @@
-import './App.css';
-import React from 'react'
-import Form from './pages/Form';
-import AppRouter from './routers/AppRouter';
+import "./App.css";
+import React from "react";
+import FormAmpollas from "./pages/FormAmpollas";
+import AppRouter from "./routers/AppRouter";
 
 function App() {
-  return (
-    <AppRouter/>
-  );
+  return <AppRouter />;
 }
 
 export default App;
