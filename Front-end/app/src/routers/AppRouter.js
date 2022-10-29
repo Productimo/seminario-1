@@ -1,16 +1,21 @@
 import React from "react";
 import { Router, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home";
-import Dashboard from "../pages/Dashboard";
-import FormAmpollas from "../pages/FormAmpollas";
+import HomeSatelite from "../pages/user-Satelite/HomeSatelite";
+
+import FormAmpollasSatelite from "../pages/user-Satelite/FormAmpollasSatelite";
+import PedidoDeEmergenciaSatelite from "../pages/user-Satelite/PedidoDeEmergenciaSatelite";
+import AtencionDePacientesSatelite from "../pages/user-Satelite/AtencionDePacientesSatelite";
+import GestionDeStockSatelite from "../pages/user-Satelite/GestionDeStockSatelite";
 
 export default function AppRouter() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/Home" element={<Home />} />
-      <Route path="/FormAmpollas" element={<FormAmpollas />} />
-      <Route path="/Dashboard" element={<Dashboard />} />
+      <Route path="/" element={<HomeSatelite />} />
+      <Route path="/HomeSatelite" element={<HomeSatelite />} />
+      <Route path="/GestionDeStockSatelite" element={<GestionDeStockSatelite />} />
+      <Route path="/AtencionDePacientesSatelite" element={<AtencionDePacientesSatelite />} />
+      <Route path="/PedidoDeEmergenciaSatelite" element={<PedidoDeEmergenciaSatelite />} />
+      <Route path="/FormAmpollasSatelite" element={<FormAmpollasSatelite />} />
     </Routes>
   );
 }

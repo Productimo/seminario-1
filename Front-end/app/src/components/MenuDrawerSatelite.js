@@ -15,27 +15,46 @@ import { Divider, ListItem, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import BackupTableSharpIcon from "@mui/icons-material/BackupTableSharp";
 import AccountBoxOutlinedIcon from "@mui/icons-material/AccountBoxOutlined";
+import InventoryIcon from '@mui/icons-material/Inventory';
 import FormatIndentIncreaseOutlinedIcon from "@mui/icons-material/FormatIndentIncreaseOutlined";
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import { LogoDev, Support } from "@mui/icons-material";
+import SosIcon from '@mui/icons-material/Sos';
+import LogoDevIcon from '@mui/icons-material/LogoDev';
 
 const drawerWidth = 280;
 
-export default function MenuDrawer() {
+export default function MenuDrawerSatelite() {
   let navigate = useNavigate();
 
-  const goToHome = () => {
-    let path = "/Home";
+  const goToHomeSatelite = () => {
+    let path = "/HomeSatelite";
     navigate(path);
   };
 
-  const goToForm = () => {
-    let path = "/FormAmpollas";
+ /* const goToFormSatelite = () => {
+    let path = "/FormAmpollasSatelite";
     navigate(path);
-  };
+  };*/
 
-  const goToDashboard = () => {
-    let path = "/Dashboard";
+  const goToPedidoDeEmergenciaSatelite = () =>{
+    let path = '/PedidoDeEmergenciaSatelite';
     navigate(path);
-  };
+  }
+
+  const goToAtencionDePacientesSatelite = () => {
+    let path = '/FormAmpollasSatelite';
+    navigate(path)
+  }
+
+  const goToGestionDeStockSatelite = () => {
+    let path = '/GestionDeStockSatelite';
+    navigate(path)
+  }
+
+  /*const god = () =>{
+    let path
+  }*/
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -68,48 +87,61 @@ export default function MenuDrawer() {
           <List sx={{ width: "100%" }}>
             <ListItem sx={{ padding: 0 }}></ListItem>
 
-            {/*<ListItemButton onClick={goToDashboard}>
-              <ListItemIcon>
-                <BackupTableSharpIcon />
-              </ListItemIcon>
-              <ListItemText primary="Dashboard" />
-            </ListItemButton>*/}
-
-            <ListItemButton onClick={goToHome}>
+             <ListItemButton onClick={goToHomeSatelite}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Inicio" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={goToPedidoDeEmergenciaSatelite}>
               <ListItemIcon>
-                <AccountBoxOutlinedIcon />
+                <SosIcon />
               </ListItemIcon>
-              <ListItemText primary="Usuario" />
+              <ListItemText primary="Pedido de emergencia" />
             </ListItemButton>
 
-            <ListItemButton onClick={goToForm}>
+            <ListItemButton onClick={goToAtencionDePacientesSatelite}>
               <ListItemIcon>
-                <FormatIndentIncreaseOutlinedIcon />
+                <SupportAgentIcon />
               </ListItemIcon>
-              <ListItemText primary="Generar formulario" />
+              <ListItemText primary="Atencion de pacientes" />
+            </ListItemButton>
+
+            <ListItemButton onClick={goToGestionDeStockSatelite}>
+              <ListItemIcon>
+                <InventoryIcon />
+              </ListItemIcon>
+              <ListItemText primary="Gestion de stock" />
             </ListItemButton>
 
             <ListItemButton>
               <ListItemIcon>
                 <LocalShippingIcon />
               </ListItemIcon>
-              <ListItemText primary="Pedido de emergencia" />
+              <ListItemText primary="Pedidos" />
             </ListItemButton>
 
+            
+
             <Divider />
+
+
             <ListItemButton>
               <ListItemIcon>
                 <LogoutIcon />
               </ListItemIcon>
               <ListItemText primary="Cerrar sesión" />
             </ListItemButton>
+
+            <Divider />
+
+            <ListItemButton>
+              <ListItemIcon>
+                <LogoDev sx={{color:'green'}}/>
+              </ListItemIcon>
+            </ListItemButton>            
+
           </List>
         </Box>
       </Drawer>

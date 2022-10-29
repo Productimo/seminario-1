@@ -1,10 +1,10 @@
 import React from "react";
-import MenuDrawer from "../components/MenuDrawer";
+import MenuDrawerSatelite from "../../components/MenuDrawerSatelite";
 import { Container } from "@mui/system";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 
-export default function Home() {
+export default function HomeSatelite() {
   return (
     <Container
       sx={{
@@ -13,7 +13,7 @@ export default function Home() {
         marginTop: "80px",
       }}
     >
-      <MenuDrawer />
+      <MenuDrawerSatelite />
       <Box>
         <Typography
           variant="h4"

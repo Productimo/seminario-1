@@ -9,7 +9,7 @@ import Snackbar from "@mui/material/Snackbar";
 import MenuItem from "@mui/material/MenuItem";
 import { Grid, TextField } from "@mui/material";
 import BadgeIcon from "@mui/icons-material/Badge";
-import MenuDrawer from "../components/MenuDrawer";
+import MenuDrawerSatelite from "../../components/MenuDrawerSatelite";
 import LoadingButton from "@mui/lab/LoadingButton";
 import { AccountCircle } from "@mui/icons-material";
 import FormControl from "@mui/material/FormControl";
@@ -18,6 +18,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
+import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
 
 const boxShadowStyle = {
   padding: "10px 20px",
@@ -39,7 +40,7 @@ const modalStyle = {
   p: 4,
 };
 
-export default function FormAmpollas() {
+export default function FormAmpollasSatelite() {
   const [dni_paciente, setDNI] = useState();
   const [comentarios, setComentarios] = useState();
   const [formulario, setFormulario] = useState({});
@@ -47,6 +48,7 @@ export default function FormAmpollas() {
   const [nombre_paciente, setNombrePaciente] = useState();
   const [cod_medicamento, setCodMedicamento] = useState("");
   const [hospital_urgencia, setHospitalUrgencia] = useState("");
+  const [medico_atencion, setMedicoAtencion] = useState("");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
@@ -60,7 +62,8 @@ export default function FormAmpollas() {
       !nombre_paciente ||
       !cod_medicamento ||
       !hospital_urgencia ||
-      !cant_ampollas
+      !cant_ampollas ||
+      !medico_atencion
     ) {
       setErrorMessage("Por favor complete todos los datos");
       return setAlertOpen(true);
@@ -69,17 +72,29 @@ export default function FormAmpollas() {
   };
 
   const handleSubmit = () => {
-    setLoading(true);
+    
     // TODO: Send data to backend
+    
+    setFormulario({
+      dni_paciente,
+      nombre_paciente,
+      cod_medicamento,
+      hospital_urgencia,
+      cant_ampollas,
+      medico_atencion
+    })
+    //setLoading(true);
     window.location.reload();
   };
+
+  console.log(formulario)
 
   return (
     <Container
       sx={{ display: "flex", minWidth: "100%", padding: "20px" }}
       disableGutters
     >
-      <MenuDrawer />
+      <MenuDrawerSatelite />
       <Box style={boxShadowStyle}>
         <Typography
           variant="h5"
@@ -124,7 +139,7 @@ export default function FormAmpollas() {
           <Grid item xs={4}>
             <Divider />
           </Grid>
-          <Grid item xs={1.3333333}>
+          <Grid item xs={1}>
             <FormControl sx={{ minWidth: "100%" }} variant="outlined">
               <Select
                 InputProps={{
@@ -146,7 +161,7 @@ export default function FormAmpollas() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={1.3333333}>
+          <Grid item xs={1}>
             <FormControl sx={{ minWidth: "100%" }} variant="outlined">
               <Select
                 onChange={(v) => setCodMedicamento(v.target.value)}
@@ -161,7 +176,25 @@ export default function FormAmpollas() {
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={1.3333333}>
+
+          <Grid item xs={1}>
+            <TextField
+              label="Medico que realizó la atención *"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <MedicalInformationIcon sx={{ color: "teal" }} />
+                  </InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              onChange={(v) => setMedicoAtencion(v.target.value)}
+              value={medico_atencion}
+              sx={{ width: "100%" }}
+            />
+          </Grid>
+
+          <Grid item xs={1}>
             <TextField
               label="Cantidad de ampollas *"
               InputProps={{
@@ -178,6 +211,8 @@ export default function FormAmpollas() {
               type="number"
             />
           </Grid>
+         
+          
           <Grid item xs={4}>
             <TextField
               label="Comentarios"
@@ -188,18 +223,7 @@ export default function FormAmpollas() {
               sx={{ width: "100%" }}
             />
           </Grid>
-          <Grid item xs={4}>
-            <div
-              style={{
-                display: "flex",
-                alignItems: "center",
-                cursor: "pointer",
-              }}
-            >
-              <AttachFileIcon sx={{ color: "teal" }} />
-              <Typography variant="span">Adjuntar archivo</Typography>
-            </div>
-          </Grid>
+         
           <Grid item xs={4} sx={{ textAlign: "center" }}>
             <Button variant="contained" onClick={checkData}>
               CONTINUAR
@@ -261,7 +285,7 @@ export default function FormAmpollas() {
             <LoadingButton
               variant="contained"
               onClick={handleSubmit}
-              loading={loading}
+              //loading={loading}
               sx={{ marginLeft: 1 }}
             >
               ENVIAR FORMULARIO
