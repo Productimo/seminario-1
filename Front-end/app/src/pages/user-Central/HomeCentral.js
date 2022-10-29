@@ -1,8 +1,8 @@
 import React from "react";
-import MenuDrawerSatelite from "../../components/MenuDrawerSatelite";
 import { Container } from "@mui/system";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import MenuDrawerCentral from "../../components/MenuDrawerCentral";
 
 export default function HomeSatelite() {
   return (
@@ -13,17 +13,14 @@ export default function HomeSatelite() {
         marginTop: "80px",
       }}
     >
-      <MenuDrawerSatelite />
+      <MenuDrawerCentral />
       <Box>
         <Typography
           variant="h4"
           component="div"
           sx={{ paddingBottom: "25px", paddingTop: "10px" }}
         >
-          ¡Bienvenido Hospital Satelite!
-        </Typography>
-        <Typography variant="h6" component="div" sx={{ paddingBottom: "25px" }}>
-          El día de hoy has ingresado X formularios.
+          ¡Bienvenido Hospital Central!
         </Typography>
       </Box>
     </Container>

@@ -18,7 +18,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
 import AttachFileIcon from "@mui/icons-material/AttachFile";
 import LocalHospitalIcon from "@mui/icons-material/LocalHospital";
-import MedicalInformationIcon from '@mui/icons-material/MedicalInformation';
+import MedicalInformationIcon from "@mui/icons-material/MedicalInformation";
 
 const boxShadowStyle = {
   padding: "10px 20px",
@@ -47,21 +47,19 @@ export default function FormAmpollasSatelite() {
   const [cant_ampollas, setCantAmpollas] = useState();
   const [nombre_paciente, setNombrePaciente] = useState();
   const [cod_medicamento, setCodMedicamento] = useState("");
-  const [hospital_urgencia, setHospitalUrgencia] = useState("");
   const [medico_atencion, setMedicoAtencion] = useState("");
 
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const [open, setOpen] = React.useState(false);
-  const [loading, setLoading] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const checkData = () => {
     if (
       !dni_paciente ||
       !nombre_paciente ||
       !cod_medicamento ||
-      !hospital_urgencia ||
       !cant_ampollas ||
       !medico_atencion
     ) {
@@ -72,22 +70,20 @@ export default function FormAmpollasSatelite() {
   };
 
   const handleSubmit = () => {
-    
     // TODO: Send data to backend
-    
+
     setFormulario({
       dni_paciente,
       nombre_paciente,
       cod_medicamento,
-      hospital_urgencia,
       cant_ampollas,
-      medico_atencion
-    })
+      medico_atencion,
+    });
     //setLoading(true);
     window.location.reload();
   };
 
-  console.log(formulario)
+  console.log(formulario);
 
   return (
     <Container
@@ -101,7 +97,7 @@ export default function FormAmpollasSatelite() {
           component="div"
           sx={{ paddingBottom: "25px", paddingTop: "10px" }}
         >
-          Ingreso de nuevo formulario
+          Ingreso de nueva atención
         </Typography>
         <Grid container spacing={2} columns={4}>
           <Grid item xs={2}>
@@ -139,7 +135,7 @@ export default function FormAmpollasSatelite() {
           <Grid item xs={4}>
             <Divider />
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1.3333}>
             <FormControl sx={{ minWidth: "100%" }} variant="outlined">
               <Select
                 InputProps={{
@@ -149,19 +145,19 @@ export default function FormAmpollasSatelite() {
                     </InputAdornment>
                   ),
                 }}
-                onChange={(v) => setHospitalUrgencia(v.target.value)}
-                value={hospital_urgencia}
+                onChange={(v) => setMedicoAtencion(v.target.value)}
+                value={medico_atencion}
                 sx={{ width: "100%" }}
                 displayEmpty
               >
                 <MenuItem value="" default disabled>
-                  <em>Hospital en el que se atendió *</em>
+                  <em>Medico que realizó la atención *</em>
                 </MenuItem>
-                <MenuItem value={"posadas"}>Hospital Posadas</MenuItem>
+                <MenuItem value={"medico1"}>Medico 1</MenuItem>
               </Select>
             </FormControl>
           </Grid>
-          <Grid item xs={1}>
+          <Grid item xs={1.3333}>
             <FormControl sx={{ minWidth: "100%" }} variant="outlined">
               <Select
                 onChange={(v) => setCodMedicamento(v.target.value)}
@@ -177,24 +173,7 @@ export default function FormAmpollasSatelite() {
             </FormControl>
           </Grid>
 
-          <Grid item xs={1}>
-            <TextField
-              label="Medico que realizó la atención *"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <MedicalInformationIcon sx={{ color: "teal" }} />
-                  </InputAdornment>
-                ),
-              }}
-              variant="outlined"
-              onChange={(v) => setMedicoAtencion(v.target.value)}
-              value={medico_atencion}
-              sx={{ width: "100%" }}
-            />
-          </Grid>
-
-          <Grid item xs={1}>
+          <Grid item xs={1.3333}>
             <TextField
               label="Cantidad de ampollas *"
               InputProps={{
@@ -211,8 +190,7 @@ export default function FormAmpollasSatelite() {
               type="number"
             />
           </Grid>
-         
-          
+
           <Grid item xs={4}>
             <TextField
               label="Comentarios"
@@ -223,13 +201,14 @@ export default function FormAmpollasSatelite() {
               sx={{ width: "100%" }}
             />
           </Grid>
-         
+
           <Grid item xs={4} sx={{ textAlign: "center" }}>
             <Button variant="contained" onClick={checkData}>
               CONTINUAR
             </Button>
           </Grid>
         </Grid>
+
         <Snackbar
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           open={alertOpen}
@@ -262,7 +241,7 @@ export default function FormAmpollasSatelite() {
           </Typography>
           <br />
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Hospital: {hospital_urgencia}
+            Médico encargado: {medico_atencion}
           </Typography>
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
             Medicamento utilizado: {cod_medicamento}

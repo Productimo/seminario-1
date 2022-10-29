@@ -4,41 +4,25 @@ import List from "@mui/material/List";
 import Drawer from "@mui/material/Drawer";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
-import { LogoDev } from "@mui/icons-material";
-import SosIcon from "@mui/icons-material/Sos";
 import { useNavigate } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import LogoutIcon from "@mui/icons-material/Logout";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import { Divider, ListItem, Typography } from "@mui/material";
 import InventoryIcon from "@mui/icons-material/Inventory";
+import ListItemButton from "@mui/material/ListItemButton";
+import AssessmentIcon from "@mui/icons-material/Assessment";
+import { Divider, ListItem, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 
 const drawerWidth = 280;
 
-export default function MenuDrawerSatelite() {
+export default function MenuDrawerCentral() {
   let navigate = useNavigate();
 
-  const goToHomeSatelite = () => {
-    let path = "/HomeSatelite";
-    navigate(path);
-  };
-
-  const goToPedidoDeEmergenciaSatelite = () => {
-    let path = "/PedidoDeEmergenciaSatelite";
-    navigate(path);
-  };
-
-  const goToAtencionDePacientesSatelite = () => {
-    let path = "/FormAmpollasSatelite";
-    navigate(path);
-  };
-
-  const goToGestionDeStockSatelite = () => {
-    let path = "/GestionDeStockSatelite";
+  const goToHomeCentral = () => {
+    let path = "/HomeCentral";
     navigate(path);
   };
 
@@ -78,28 +62,21 @@ export default function MenuDrawerSatelite() {
           <List sx={{ width: "100%" }}>
             <ListItem sx={{ padding: 0 }}></ListItem>
 
-            <ListItemButton onClick={goToHomeSatelite}>
+            <ListItemButton onClick={goToHomeCentral}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
               <ListItemText primary="Inicio" />
             </ListItemButton>
 
-            <ListItemButton onClick={goToPedidoDeEmergenciaSatelite}>
+            <ListItemButton>
               <ListItemIcon>
-                <SosIcon />
+                <LocalShippingIcon />
               </ListItemIcon>
-              <ListItemText primary="Pedido de emergencia" />
+              <ListItemText primary="Pedidos" />
             </ListItemButton>
 
-            <ListItemButton onClick={goToAtencionDePacientesSatelite}>
-              <ListItemIcon>
-                <SupportAgentIcon />
-              </ListItemIcon>
-              <ListItemText primary="Atencion de pacientes" />
-            </ListItemButton>
-
-            <ListItemButton onClick={goToGestionDeStockSatelite}>
+            <ListItemButton>
               <ListItemIcon>
                 <InventoryIcon />
               </ListItemIcon>
@@ -108,9 +85,16 @@ export default function MenuDrawerSatelite() {
 
             <ListItemButton>
               <ListItemIcon>
-                <LocalShippingIcon />
+                <SupportAgentIcon />
               </ListItemIcon>
-              <ListItemText primary="Pedidos" />
+              <ListItemText primary="Historial de atenciones" />
+            </ListItemButton>
+
+            <ListItemButton>
+              <ListItemIcon>
+                <AssessmentIcon />
+              </ListItemIcon>
+              <ListItemText primary="Reportes" />
             </ListItemButton>
 
             <Divider />
