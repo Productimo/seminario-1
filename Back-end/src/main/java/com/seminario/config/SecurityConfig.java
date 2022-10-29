@@ -21,12 +21,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String ENDPOINT_REGISTER_USER = "/tenpo/user/**";
+    private static final String ENDPOINT_REGISTER_USER = "/api/user/**";
     private static final String ROLE_NEEDED = "USER_ROLE";
     private static final String[] ENDPOINTS_AUTH = {
-            "/tenpo/calculator/**",
-            "/tenpo/trace/history/**",
-            "/tenpo/logout/**"};
+            "/api/**"};
     private final UserDetailsService userDetailsService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserLogedCache cache;
@@ -69,7 +67,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers(POST, ENDPOINT_REGISTER_USER).permitAll()
-                .antMatchers(GET, ENDPOINTS_AUTH).hasAnyAuthority(ROLE_NEEDED)
+                .antMatchers(GET, ENDPOINTS_AUTH).permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(new AuthorizationFilter(env, cache), UsernamePasswordAuthenticationFilter.class);

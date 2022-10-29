@@ -14,6 +14,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -35,6 +36,9 @@ public class Hospital {
 
 	@OneToMany(mappedBy="hospital")
     private Set<Stock> stockByMedicamento;
+	
+	@OneToOne(mappedBy = "hospital")
+	private User user;
 	
 	@Column(name = "nombre")
 	private String nombre;

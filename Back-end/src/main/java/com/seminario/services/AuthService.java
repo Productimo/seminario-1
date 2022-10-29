@@ -5,6 +5,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.seminario.dtos.AccessTokenDTO;
+import com.seminario.repositories.UserRepository;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -29,14 +30,16 @@ public class AuthService {
 
     private final AuthenticationManager authenticationManager;
     private final UserLogedCache cache;
+    private final UserRepository repository;
 
     @Autowired
     private Environment env;
     
-    public AuthService(AuthenticationManager authenticationManager, UserLogedCache cache) {
+    public AuthService(AuthenticationManager authenticationManager, UserLogedCache cache, UserRepository repository) {
 		super();
 		this.authenticationManager = authenticationManager;
 		this.cache = cache;
+		this.repository = repository;
 	}
 
 	public AccessTokenDTO authenticate(String username, String password) {
@@ -64,7 +67,7 @@ public class AuthService {
 
         log.info("[Log] Successful - Username {} loading in cache", user.getUsername());
         cache.addUser(access_token, user.getUsername());
-        return new AccessTokenDTO(access_token);
+        return new AccessTokenDTO(access_token, user.getUsername(), repository.findByUsername(user.getUsername()));
 
     }
 

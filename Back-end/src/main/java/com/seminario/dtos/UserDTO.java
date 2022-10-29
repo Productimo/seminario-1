@@ -23,14 +23,26 @@ public class UserDTO {
     @NotEmpty(message = EMAIL_NOT_EMPTY)
     private String mail;
 
+    @NotNull(message = HOSPITAL_NOT_NULL)
+    @NotEmpty(message = HOSPITAL_NOT_EMPTY)
+    private String hospital;
+    
+    @NotNull(message = HOSPITAL_NOT_NULL)
+    @NotEmpty(message = HOSPITAL_NOT_EMPTY)
+    private String rol;
+    
 	public UserDTO(
 			@NotNull(message = "Username may not be null") @NotEmpty(message = "Username may not be empty") @Size(min = 4, message = "Invalid username size") String username,
 			@NotNull(message = "Password may not be null") @NotEmpty(message = "Password may not be empty") @Size(min = 4, message = "Invalid password size") String password,
-			@Email(message = "Invalid mail") @NotNull(message = "Email may not be null") @NotEmpty(message = "Email may not be empty") String mail) {
+			@Email(message = "Invalid mail") @NotNull(message = "Email may not be null") @NotEmpty(message = "Email may not be empty") String mail,
+			@NotNull(message = "Hospital may not be null") @NotEmpty(message = "Hospital may not be empty") String hospital,
+			@NotNull(message = "Rol may not be null") @NotEmpty(message = "Rol may not be empty") String rol) {
 		super();
 		this.username = username;
 		this.password = password;
 		this.mail = mail;
+		this.hospital = hospital;
+		this.rol = rol;
 	}
 
 	public String getUsername() {
@@ -55,6 +67,22 @@ public class UserDTO {
 
 	public void setMail(String mail) {
 		this.mail = mail;
+	}
+
+	public String getHospital() {
+		return hospital;
+	}
+
+	public void setHospital(String hospital) {
+		this.hospital = hospital;
+	}
+
+	public String getRol() {
+		return rol;
+	}
+
+	public void setRol(String rol) {
+		this.rol = rol;
 	}
 
     

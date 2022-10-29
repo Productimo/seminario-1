@@ -8,11 +8,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.seminario.dtos.FormularioDTO;
+import com.seminario.dtos.FormularioRequestDTO;
+import com.seminario.dtos.ResponseDTO;
+
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
-@Api(tags = "Calculator")
+@Api(tags = "Formulario")
 @RestController
 @RequestMapping("/api")
 public class FormularioController {
@@ -20,8 +22,9 @@ public class FormularioController {
 	
     @PostMapping("/formulario/envio")
     @ApiOperation(value = "Carga Formulario")
-    public ResponseEntity<FormularioDTO> cargaFormulario(@Valid @RequestBody FormularioDTO formularioDto) {
-        return ResponseEntity.ok(formularioDto);
+    public ResponseEntity<ResponseDTO> cargaFormulario(@Valid @RequestBody FormularioRequestDTO formularioDto) {
+    	ResponseDTO response = new ResponseDTO();
+        return ResponseEntity.ok(response);
     }
     
     

@@ -17,7 +17,7 @@ import javax.validation.Valid;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/tenpo/user")
+@RequestMapping("/api/user")
 @Api(tags = "Users")
 public class UserController {
 

@@ -34,7 +34,6 @@ public class StockController {
 	@GetMapping("/byHospital")
     @ApiOperation(value = "User Logout")
     public ResponseEntity<List<Stock>> findAllStockByHospital(
-            @RequestHeader(required = true, value = "Authorization") String authHeader,
             @RequestParam Long idHospital) {
         return ResponseEntity.ok(stockService.findAllStockByHospital(idHospital));
     }
