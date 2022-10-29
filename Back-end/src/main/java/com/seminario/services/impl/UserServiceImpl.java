@@ -1,9 +1,13 @@
 package com.seminario.services.impl;
 
 import com.seminario.dtos.UserDTO;
+import com.seminario.entitys.Hospital;
 import com.seminario.entitys.User;
+import com.seminario.entitys.UserRol;
 import com.seminario.exceptions.UserAlreadyExistException;
+import com.seminario.repositories.HospitalRepository;
 import com.seminario.repositories.UserRepository;
+import com.seminario.repositories.UserRolRepository;
 import com.seminario.services.UserService;
 
 import java.net.URI;
@@ -28,12 +32,16 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 	private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(UserService.class);
 	
     private final UserRepository repository;
+    private final HospitalRepository hospitalRepository;
+    private final UserRolRepository userRolRepository;
     private final PasswordEncoder passwordEncoder;
     
-    public UserServiceImpl(UserRepository repository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository repository, PasswordEncoder passwordEncoder, HospitalRepository hospitalRepository, UserRolRepository userRolRepository) {
 		super();
 		this.repository = repository;
 		this.passwordEncoder = passwordEncoder;
+		this.hospitalRepository = hospitalRepository;
+		this.userRolRepository = userRolRepository;
 	}
 
 	@Override
@@ -57,7 +65,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         } else if (isEmailRegistered(userDTO.getMail().trim().toLowerCase())){
             throw new UserAlreadyExistException(EMAIL_IS_ALREADY_REGISTERED_EXCEPTION.concat(userDTO.getMail()));
         }
-        User user = new User(userDTO.getUsername().trim().toLowerCase(), userDTO.getPassword(), userDTO.getMail());
+        User user = new User(userDTO.getUsername().trim().toLowerCase(), userDTO.getPassword(), userDTO.getMail()
+        		, getIdHospitalByName(userDTO.getHospital())
+        		, getIdRolByName(userDTO.getRol()));
         log.info("[Log] Saving user {} to database", user.getUsername());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return repository.save(user);
@@ -88,4 +98,14 @@ public class UserServiceImpl implements UserService, UserDetailsService {
         return (this.getUserByEmail(email) != null);
     }
 
+    private Long getIdHospitalByName(String nombreHospital) {
+		Hospital hospital = hospitalRepository.findByNombre(nombreHospital);
+    	return hospital != null ? hospital.getId() : 0;
+    }
+    
+    private Long getIdRolByName(String rol) {
+    	UserRol userRol = userRolRepository.findByRol(rol);
+    	
+    	return userRol != null ? userRol.getId() : 1;
+    }
 }

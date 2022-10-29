@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Validated
 @RestController
-@RequestMapping("/tenpo")
+@RequestMapping("/api")
 @Api(tags = "History")
 public class HistoryController {
 
@@ -26,7 +26,7 @@ public class HistoryController {
 	@GetMapping(value = "/history")
     @ApiOperation(value = "Get History")
     public ResponseEntity<List<History>> getHistoryHistory(
-            @RequestHeader(required = true, value = "Authorization") String auth,
+//            @RequestHeader(required = true, value = "Authorization") String auth,
             @RequestParam(defaultValue = "0") Integer pageNumber,
             @RequestParam(defaultValue = "10") Integer pageSize,
             @RequestParam(defaultValue = "id") String sortBy) throws NegativeParamException {

@@ -36,6 +36,8 @@ public class Consts {
     public static final String EMAIL_INVALID = "Invalid mail";
     public static final String EMAIL_NOT_NULL = "Email may not be null";
     public static final String EMAIL_NOT_EMPTY = "Email may not be empty";
+    public static final String HOSPITAL_NOT_NULL = "Hospital may not be null";
+    public static final String HOSPITAL_NOT_EMPTY = "Hospital may not be empty";
 
     /* Swagger config constants */
     public static final String BASE_PACKAGE = "com.challange.tenpo.controllers";

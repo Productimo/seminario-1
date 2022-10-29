@@ -1,7 +1,7 @@
 package com.seminario.dtos;
 
 
-public class FormularioDTO {
+public class FormularioRequestDTO {
 	
 	private Long dniPaciente;
 	private String nombrePaciente;
