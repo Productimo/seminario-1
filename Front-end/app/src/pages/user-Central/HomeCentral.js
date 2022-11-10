@@ -121,7 +121,7 @@ const rows = [
   },
 ];
 
-export default function HomeSatelite() {
+export default function HomeCentral() {
   const [stockOpen, setStockOpen] = useState(false);
   const [reportOpen, setReportOpen] = useState(false);
   const [hospital, setHospital] = useState("");

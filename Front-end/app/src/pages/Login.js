@@ -48,7 +48,7 @@ export default function Login() {
     localStorage.setItem(
       "user",
       JSON.stringify({
-        role: "user_admin",
+        role: "user_satelite",
       })
     );
     window.location.href = "/";

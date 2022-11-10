@@ -75,15 +75,15 @@ export default function PedidoDeEmergenciaSatelite() {
       <MenuDrawerSatelite />
       <Box style={boxShadowStyle}>
         <Typography variant="h5" component="div" sx={{ paddingTop: "10px" }}>
-          Pedido de emergencia
+          Pedido de urgencia
         </Typography>
         <Typography
           variant="p"
           component="p"
           sx={{ paddingBottom: "25px", paddingTop: "10px" }}
         >
-          Este formulario creará un pedido de emergencia al hospital central
-          para cubrir la demanda lo antes posible.
+          Este formulario creará un pedido de urgencia al hospital central para
+          cubrir la demanda lo antes posible.
         </Typography>
         <Grid container spacing={2} columns={4}>
           <Grid item xs={2}>

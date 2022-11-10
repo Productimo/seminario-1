@@ -90,13 +90,6 @@ export default function MenuDrawerCentral() {
               <ListItemText primary="Historial de atenciones" />
             </ListItemButton>
 
-            <ListItemButton>
-              <ListItemIcon>
-                <AssessmentIcon />
-              </ListItemIcon>
-              <ListItemText primary="Reportes" />
-            </ListItemButton>
-
             <Divider />
 
             <ListItemButton onClick={closeSession}>

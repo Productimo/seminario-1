@@ -89,7 +89,7 @@ export default function MenuDrawerSatelite() {
               <ListItemIcon>
                 <SosIcon />
               </ListItemIcon>
-              <ListItemText primary="Pedido de emergencia" />
+              <ListItemText primary="Pedido de urgencia" />
             </ListItemButton>
 
             <ListItemButton onClick={goToAtencionDePacientesSatelite}>
