@@ -26,6 +26,11 @@ export default function MenuDrawerCentral() {
     navigate(path);
   };
 
+  const goToPedidosCentral = () => {
+    let path = "/PedidosCentral";
+    navigate(path);
+  };
+
   const closeSession = () => {
     localStorage.removeItem("user");
     window.location.href = "/";
@@ -69,7 +74,7 @@ export default function MenuDrawerCentral() {
               <ListItemText primary="Inicio" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={goToPedidosCentral}>
               <ListItemIcon>
                 <LocalShippingIcon />
               </ListItemIcon>

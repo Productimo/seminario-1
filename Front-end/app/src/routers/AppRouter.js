@@ -13,6 +13,7 @@ import PedidosSatelite from "../pages/user-Satelite/PedidosSatelite";
 
 // Central
 import HomeCentral from "../pages/user-Central/HomeCentral";
+import PedidosCentral from "../pages/user-Central/PedidosCentral";
 
 export default function AppRouter() {
   const getRole = () => {
@@ -46,6 +47,7 @@ export default function AppRouter() {
         <>
           <Route path="/" element={<HomeCentral />} />
           <Route path="/HomeCentral" element={<HomeCentral />} />
+          <Route path="/PedidosCentral" element={<PedidosCentral />} />
         </>
       )}
 

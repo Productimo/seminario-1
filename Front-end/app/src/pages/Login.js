@@ -45,13 +45,26 @@ export default function Login() {
     }
 
     setLoading(true);
-    localStorage.setItem(
-      "user",
-      JSON.stringify({
-        role: "user_satelite",
-      })
-    );
-    window.location.href = "/";
+    if (usuario === "satelite" && password === "satelite") {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          role: "user_satelite",
+        })
+      );
+      window.location.href = "/";
+    } else if (usuario === "admin" && password === "admin") {
+      localStorage.setItem(
+        "user",
+        JSON.stringify({
+          role: "user_admin",
+        })
+      );
+      window.location.href = "/";
+    } else {
+      setErrorMessage("Credenciales incorrectas");
+      setAlertOpen(true);
+    }
     setLoading(false);
   };
 
