@@ -9,7 +9,7 @@ import HomeSatelite from "../pages/user-Satelite/HomeSatelite";
 import FormAmpollasSatelite from "../pages/user-Satelite/FormAmpollasSatelite";
 import GestionDeStockSatelite from "../pages/user-Satelite/GestionDeStockSatelite";
 import PedidoDeEmergenciaSatelite from "../pages/user-Satelite/PedidoDeEmergenciaSatelite";
-import AtencionDePacientesSatelite from "../pages/user-Satelite/AtencionDePacientesSatelite";
+import PedidosSatelite from "../pages/user-Satelite/PedidosSatelite";
 
 // Central
 import HomeCentral from "../pages/user-Central/HomeCentral";
@@ -27,21 +27,18 @@ export default function AppRouter() {
           <Route path="/" element={<HomeSatelite />} />
           <Route path="/HomeSatelite" element={<HomeSatelite />} />
           <Route
-            path="/GestionDeStockSatelite"
-            element={<GestionDeStockSatelite />}
-          />
-          <Route
-            path="/AtencionDePacientesSatelite"
-            element={<AtencionDePacientesSatelite />}
+            path="/FormAmpollasSatelite"
+            element={<FormAmpollasSatelite />}
           />
           <Route
             path="/PedidoDeEmergenciaSatelite"
             element={<PedidoDeEmergenciaSatelite />}
           />
           <Route
-            path="/FormAmpollasSatelite"
-            element={<FormAmpollasSatelite />}
+            path="/GestionDeStockSatelite"
+            element={<GestionDeStockSatelite />}
           />
+          <Route path="/PedidosSatelite" element={<PedidosSatelite />} />
         </>
       )}
 

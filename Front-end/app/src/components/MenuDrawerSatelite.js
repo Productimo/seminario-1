@@ -42,6 +42,11 @@ export default function MenuDrawerSatelite() {
     navigate(path);
   };
 
+  const goToPedidosSatelite = () => {
+    let path = "/PedidosSatelite";
+    navigate(path);
+  };
+
   const closeSession = () => {
     localStorage.removeItem("user");
     window.location.href = "/";
@@ -85,18 +90,18 @@ export default function MenuDrawerSatelite() {
               <ListItemText primary="Inicio" />
             </ListItemButton>
 
-            <ListItemButton onClick={goToPedidoDeEmergenciaSatelite}>
-              <ListItemIcon>
-                <SosIcon />
-              </ListItemIcon>
-              <ListItemText primary="Pedido de urgencia" />
-            </ListItemButton>
-
             <ListItemButton onClick={goToAtencionDePacientesSatelite}>
               <ListItemIcon>
                 <SupportAgentIcon />
               </ListItemIcon>
               <ListItemText primary="Atencion de pacientes" />
+            </ListItemButton>
+
+            <ListItemButton onClick={goToPedidoDeEmergenciaSatelite}>
+              <ListItemIcon>
+                <SosIcon />
+              </ListItemIcon>
+              <ListItemText primary="Pedido de urgencia" />
             </ListItemButton>
 
             <ListItemButton onClick={goToGestionDeStockSatelite}>
@@ -106,7 +111,7 @@ export default function MenuDrawerSatelite() {
               <ListItemText primary="Gestion de stock" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={goToPedidosSatelite}>
               <ListItemIcon>
                 <LocalShippingIcon />
               </ListItemIcon>
