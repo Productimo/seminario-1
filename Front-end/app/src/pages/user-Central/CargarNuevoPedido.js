@@ -1,6 +1,6 @@
 import React from "react";
 import MenuDrawerCentral from "../../components/MenuDrawerCentral";
-import { Container } from "@mui/system/Container";
+import { Container } from "@mui/system";
 
 export default function CargarNuevoPedido(){
     return(
