@@ -15,6 +15,7 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import { Divider, ListItem, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 
 const drawerWidth = 280;
 
@@ -35,6 +36,11 @@ export default function MenuDrawerCentral() {
     localStorage.removeItem("user");
     window.location.href = "/";
   };
+
+  const goToCargarNuevoPedido = ()=>{
+    let path = "/CargarNuevoPedido";
+    navigate(path);
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -81,6 +87,13 @@ export default function MenuDrawerCentral() {
               <ListItemText primary="Pedidos" />
             </ListItemButton>
 
+            <ListItemButton onClick={goToCargarNuevoPedido}>
+              <ListItemIcon>
+                <AddShoppingCartIcon />
+              </ListItemIcon>
+              <ListItemText primary="Cargar nuevo pedido" />
+            </ListItemButton>
+
             <ListItemButton>
               <ListItemIcon>
                 <InventoryIcon />
@@ -103,6 +116,8 @@ export default function MenuDrawerCentral() {
               </ListItemIcon>
               <ListItemText primary="Cerrar sesión" />
             </ListItemButton>
+           
+
           </List>
         </Box>
       </Drawer>
