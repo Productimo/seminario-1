@@ -77,7 +77,7 @@ export default function MenuDrawerCentral() {
           <List sx={{ width: "100%" }}>
             <ListItem sx={{ padding: 0 }}></ListItem>
 
-            <ListItemButton onClick={goToHomeCentral}>
+            <ListItemButton onClick={e}>
               <ListItemIcon>
                 <HomeIcon />
               </ListItemIcon>
