@@ -1,6 +1,5 @@
 import React from "react";
-import MenuDrawerCentral from "../../components/MenuDrawerCentral"
-
+import MenuDrawerCentral from "../../components/MenuDrawerCentral";
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
 import Alert from "@mui/material/Alert";
@@ -21,6 +20,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
+import DeleteIcon from "@mui/icons-material/Delete"
+import AddIcon from '@mui/icons-material/Add';
+import { Add } from "@mui/icons-material";
 
 const boxShadowStyle = {
   padding: "10px 20px",
@@ -47,6 +49,34 @@ const titleStyle = {
   color: "rgba(0, 129, 128, 0.87)",
   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
 }
+
+const rows = [
+  {
+    Medicamento: "Garrahan",
+    Codigo_medicamento: "OE0005",
+    Unidades: "Factor VIII Octapharma",
+    Acciones: "",
+  },
+  {
+    Medicamento: "Garrahan",
+    Codigo_medicamento: "OE0005",
+    Unidades: "Factor VIII Octapharma",
+    Acciones: "",
+  },
+  {
+    Medicamento: "Garrahan",
+    Codigo_medicamento: "OE0005",
+    Unidades: "Factor VIII Octapharma",
+    Acciones: "",
+  },
+  {
+    Medicamento: "Garrahan",
+    Codigo_medicamento: "OE0005",
+    Unidades: "Factor VIII Octapharma",
+    Acciones: "",
+  }
+];
+
 
 export default function CargarNuevoPedido(){
   const [hospital, setHospital] = useState("");
@@ -104,7 +134,7 @@ export default function CargarNuevoPedido(){
 
         <Grid container spacing={2} columns={4}>
 
-            <Grid item xs={1.3333}>
+            <Grid item xs={1}>
                 <FormControl sx={{ minWidth: "100%" }} variant="outlined">
                   <Select
                     onChange={(v) => setHospital(v.target.value)}
@@ -120,7 +150,7 @@ export default function CargarNuevoPedido(){
                 </FormControl>
               </Grid>
 
-              <Grid item xs={1.3333}>
+              <Grid item xs={1}>
                 <FormControl sx={{ minWidth: "100%" }} variant="outlined">
                   <Select
                     onChange={(v) => setMedicamento(v.target.value)}
@@ -136,7 +166,7 @@ export default function CargarNuevoPedido(){
                 </FormControl>
               </Grid>
 
-              <Grid item xs={1.3333}>
+              <Grid item xs={1}>
                 <TextField
                   label="Unidades *"
                   InputProps={{
@@ -154,6 +184,12 @@ export default function CargarNuevoPedido(){
                 />
               </Grid>
 
+              <Grid item xs={1}>
+                <Button variant="outlined" color="primary">
+                  <AddIcon></AddIcon>
+                </Button>
+              </Grid>
+
               <Grid item xs={4}>
                   <TableContainer component={Paper}>
                     <Table aria-label="simple table">
@@ -163,42 +199,25 @@ export default function CargarNuevoPedido(){
                             backgroundColor: "#f5f5f5",
                           }}
                         >
-                          <TableCell>Hospital</TableCell>
-                          <TableCell>Referencia pedido</TableCell>
-                          <TableCell>Nombre de medicamento</TableCell>
-                          <TableCell>Fecha del pedido</TableCell>
-                          <TableCell>Cantidad</TableCell>
-                          <TableCell>Tipo</TableCell>
-                          <TableCell>Estado</TableCell>
-                          <TableCell>Acción</TableCell>
+                          <TableCell align="left"><b >Medicamento</b></TableCell>
+                          <TableCell align="left"><b >Codigo medicamento</b></TableCell>
+                          <TableCell align="left"><b >Unidades</b></TableCell>
+                          <TableCell align="left"><b >Acciones</b></TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {rows.map((row) => (
                           <TableRow
-                            key={row.hospital}
+                            key={row.Medicamento}
                             sx={{
                               "&:last-child td, &:last-child th": { border: 0 },
                               backgroundColor: "#f5f5f5",
                             }}
                           >
-                            <TableCell component="th" scope="row">
-                              {row.hospital}
-                            </TableCell>
-                            <TableCell>{row.ref}</TableCell>
-                            <TableCell>{row.medicamento}</TableCell>
-                            <TableCell>{row.fecha}</TableCell>
-                            <TableCell>{row.cantidad}</TableCell>
-                            <TableCell>{row.tipo}</TableCell>
-                            <TableCell>{row.estado}</TableCell>
-                            <TableCell>
-                              {row.estado === "En preparación" && (
-                                <DeleteIcon
-                                  sx={{ color: "red", cursor: "pointer" }}
-                                  onClick={() => setStockOpen(true)}
-                                ></DeleteIcon>
-                              )}
-                            </TableCell>
+                            <TableCell align="left">{row.Medicamento}</TableCell>
+                            <TableCell align="left">{row.Codigo_medicamento}</TableCell>
+                            <TableCell align="left">{row.Unidades}</TableCell>
+                            <TableCell align="left">{row.Acciones}</TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
