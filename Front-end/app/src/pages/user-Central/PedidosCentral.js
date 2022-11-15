@@ -16,6 +16,9 @@ import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddBoxIcon from "@mui/icons-material/AddBox";
+import { useNavigate } from "react-router-dom";
+
+
 
 import {
   BarChart,
@@ -150,8 +153,21 @@ const rows = [
   },
 ];
 
+
+
+
+
 export default function PedidosCentral() {
   const [stockOpen, setStockOpen] = useState(false);
+
+  let navigate = useNavigate();
+
+  
+  const goToCargarNuevoPedido = ()=>{
+    let path = "/CargarNuevoPedido";
+    navigate(path);
+  }
+  
 
   return (
     <Container
@@ -261,8 +277,10 @@ export default function PedidosCentral() {
                 color: "teal",
                 cursor: "pointer",
               }}
+              onClick={goToCargarNuevoPedido}
+              
             >
-              Cargar un nuevo pedido
+              <u>Cargar un nuevo pedido</u>
               <AddBoxIcon
                 sx={{ marginLeft: "10px", top: "5px", position: "relative" }}
               ></AddBoxIcon>
