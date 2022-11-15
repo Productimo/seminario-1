@@ -41,6 +41,10 @@ export default function MenuDrawerCentral() {
     let path = "/CargarNuevoPedido";
     navigate(path);
   }
+  const goToHistorialDeAtenciones = ()=>{
+    let path = "/HistorialDeAtenciones";
+    navigate(path);
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -101,7 +105,7 @@ export default function MenuDrawerCentral() {
               <ListItemText primary="Gestion de stock" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={goToHistorialDeAtenciones}>
               <ListItemIcon>
                 <SupportAgentIcon />
               </ListItemIcon>

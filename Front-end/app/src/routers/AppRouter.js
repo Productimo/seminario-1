@@ -15,6 +15,7 @@ import PedidosSatelite from "../pages/user-Satelite/PedidosSatelite";
 import HomeCentral from "../pages/user-Central/HomeCentral";
 import PedidosCentral from "../pages/user-Central/PedidosCentral";
 import CargarNuevoPedido from "../pages/user-Central/CargarNuevoPedido"
+import HistorialDeAtenciones from "../pages/user-Central/HistorialDeAtenciones";
 
 export default function AppRouter() {
   const getRole = () => {
@@ -50,6 +51,7 @@ export default function AppRouter() {
           <Route path="/HomeCentral" element={<HomeCentral />} />
           <Route path="/PedidosCentral" element={<PedidosCentral />} />
           <Route path="/CargarNuevoPedido" element={<CargarNuevoPedido />} />
+          <Route path="/HistorialDeAtenciones" element={<HistorialDeAtenciones />} />
         </>
       )}
 
