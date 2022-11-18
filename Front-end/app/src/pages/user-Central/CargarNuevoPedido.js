@@ -7,7 +7,7 @@ import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import MenuItem from "@mui/material/MenuItem";
-import { Grid, TextField } from "@mui/material";
+import { Grid, IconButton, TextField } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
@@ -23,6 +23,7 @@ import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete"
 import AddIcon from '@mui/icons-material/Add';
 import { Add } from "@mui/icons-material";
+import uuid from "react-uuid";
 
 const boxShadowStyle = {
   padding: "10px 20px",
@@ -50,46 +51,29 @@ const titleStyle = {
   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
 }
 
-const rows = [
-  {
-    Medicamento: "Garrahan",
-    Codigo_medicamento: "OE0005",
-    Unidades: "Factor VIII Octapharma",
-    Acciones: "",
-  },
-  {
-    Medicamento: "Garrahan",
-    Codigo_medicamento: "OE0005",
-    Unidades: "Factor VIII Octapharma",
-    Acciones: "",
-  },
-  {
-    Medicamento: "Garrahan",
-    Codigo_medicamento: "OE0005",
-    Unidades: "Factor VIII Octapharma",
-    Acciones: "",
-  },
-  {
-    Medicamento: "Garrahan",
-    Codigo_medicamento: "OE0005",
-    Unidades: "Factor VIII Octapharma",
-    Acciones: "",
-  }
-];
+
 
 
 export default function CargarNuevoPedido(){
   const [hospital, setHospital] = useState("");
   const [medicamento, setMedicamento] = useState("");
+  const [codMedicamento, setCodMedicamento] = useState(uuid());
   const [unidades, setUnidades] = useState();
-  const [listaMedicamentos, setListaMedicamentos] = useState("");
   const [formulario, setFormulario] = useState({})
-
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
-
   const [open, setOpen] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [rows, setRows] = useState([{}]);
+
+  /*const rows = [
+    {
+      Medicamento: "Garrahan",
+      Codigo_medicamento: "OE0005",
+      Unidades: "20",
+      Acciones: "",
+    },
+  ];*/
+
 
   const checkData = () => {
     if (
@@ -115,7 +99,16 @@ export default function CargarNuevoPedido(){
     window.location.reload();
   };
 
-  console.log(formulario);
+  const handleNewRow = ()=>{
+    setRows({
+      medicamento,
+      codMedicamento,
+      unidades,
+    });
+  }
+
+  console.log("columnas:",rows)
+
     return(
     <Container
       sx={{ display: "flex", minWidth: "100%", padding: "20px" }}
@@ -132,7 +125,7 @@ export default function CargarNuevoPedido(){
 
         <Typography variant='h5' sx={{paddingBottom:'15px'}}>Este formulario creará un nuevo pedido que sera enviado al <b style={{ color: "rgba(0, 129, 128, 0.87)" }}>hospital satelite seleccionado</b></Typography>
 
-        <Grid container spacing={2} columns={4}>
+        <Grid container spacing={2} columns={3.3}>
 
             <Grid item xs={1}>
                 <FormControl sx={{ minWidth: "100%" }} variant="outlined">
@@ -145,7 +138,7 @@ export default function CargarNuevoPedido(){
                     <MenuItem value="" default disabled>
                       <em>Hospital *</em>
                     </MenuItem>
-                    <MenuItem value={"Hospital1"}>Hospital1</MenuItem>
+                    <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -184,14 +177,14 @@ export default function CargarNuevoPedido(){
                 />
               </Grid>
 
-              <Grid item xs={1}>
-                <Button variant="outlined" color="primary">
-                  <AddIcon></AddIcon>
+              <Grid item xs={0.3} alignItems='center'>
+                <Button sx={{minHeight:'100%'}} variant="outlined" color='success' onClick={handleNewRow}>
+                  <b>Agregar al pedido</b>
                 </Button>
               </Grid>
 
-              <Grid item xs={4}>
-                  <TableContainer component={Paper}>
+              <Grid item xs={3.3}>
+                  <TableContainer component={Paper} sx={{}}>
                     <Table aria-label="simple table">
                       <TableHead>
                         <TableRow
@@ -199,16 +192,16 @@ export default function CargarNuevoPedido(){
                             backgroundColor: "#f5f5f5",
                           }}
                         >
-                          <TableCell align="left"><b >Medicamento</b></TableCell>
-                          <TableCell align="left"><b >Codigo medicamento</b></TableCell>
-                          <TableCell align="left"><b >Unidades</b></TableCell>
-                          <TableCell align="left"><b >Acciones</b></TableCell>
+                          <TableCell align="left"><b>Medicamento</b></TableCell>
+                          <TableCell align="left"><b>Codigo medicamento</b></TableCell>
+                          <TableCell align="left"><b>Unidades</b></TableCell>
+                          <TableCell align="left"><b>Acciones</b></TableCell>
                         </TableRow>
                       </TableHead>
                       <TableBody>
                         {rows.map((row) => (
                           <TableRow
-                            key={row.Medicamento}
+                            key={row.Codigo_medicamento}
                             sx={{
                               "&:last-child td, &:last-child th": { border: 0 },
                               backgroundColor: "#f5f5f5",
@@ -217,7 +210,9 @@ export default function CargarNuevoPedido(){
                             <TableCell align="left">{row.Medicamento}</TableCell>
                             <TableCell align="left">{row.Codigo_medicamento}</TableCell>
                             <TableCell align="left">{row.Unidades}</TableCell>
-                            <TableCell align="left">{row.Acciones}</TableCell>
+                            <TableCell align="left">
+                              
+                            </TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
