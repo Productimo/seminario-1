@@ -45,6 +45,10 @@ export default function MenuDrawerCentral() {
     let path = "/HistorialDeAtenciones";
     navigate(path);
   }
+  const goToGestionDeStockCentral = ()=>{
+    let path = "/GestionDeStockCentral";
+    navigate(path);
+  }
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -98,7 +102,7 @@ export default function MenuDrawerCentral() {
               <ListItemText primary="Cargar nuevo pedido" />
             </ListItemButton>
 
-            <ListItemButton>
+            <ListItemButton onClick={goToGestionDeStockCentral}>
               <ListItemIcon>
                 <InventoryIcon />
               </ListItemIcon>

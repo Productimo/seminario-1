@@ -14,7 +14,8 @@ import PedidosSatelite from "../pages/user-Satelite/PedidosSatelite";
 // Central
 import HomeCentral from "../pages/user-Central/HomeCentral";
 import PedidosCentral from "../pages/user-Central/PedidosCentral";
-import CargarNuevoPedido from "../pages/user-Central/CargarNuevoPedido"
+import CargarNuevoPedido from "../pages/user-Central/CargarNuevoPedido";
+import GestionDeStockCentral from "../pages/user-Central/GestionDeStockCentral";
 import HistorialDeAtenciones from "../pages/user-Central/HistorialDeAtenciones";
 
 export default function AppRouter() {
@@ -51,6 +52,7 @@ export default function AppRouter() {
           <Route path="/HomeCentral" element={<HomeCentral />} />
           <Route path="/PedidosCentral" element={<PedidosCentral />} />
           <Route path="/CargarNuevoPedido" element={<CargarNuevoPedido />} />
+          <Route path="/GestionDeStockCentral" element={<GestionDeStockCentral />} />
           <Route path="/HistorialDeAtenciones" element={<HistorialDeAtenciones />} />
         </>
       )}
