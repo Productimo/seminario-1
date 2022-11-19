@@ -65,6 +65,7 @@ export default function CargarNuevoPedido(){
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState([{}]);
 
+
   /*const rows = [
     {
       Medicamento: "Garrahan",
@@ -100,11 +101,7 @@ export default function CargarNuevoPedido(){
   };
 
   const handleNewRow = ()=>{
-    setRows({
-      medicamento,
-      codMedicamento,
-      unidades,
-    });
+    setRows()
   }
 
   console.log("columnas:",rows)
@@ -211,7 +208,6 @@ export default function CargarNuevoPedido(){
                             <TableCell align="left">{row.Codigo_medicamento}</TableCell>
                             <TableCell align="left">{row.Unidades}</TableCell>
                             <TableCell align="left">
-                              
                             </TableCell>
                           </TableRow>
                         ))}
