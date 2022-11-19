@@ -18,8 +18,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useNavigate } from "react-router-dom";
 
-
-
 import {
   BarChart,
   Bar,
@@ -215,6 +213,8 @@ export default function PedidosCentral() {
               />
             </ComposedChart>
           </Grid>
+
+          
           <Grid item xs={2}>
             <Box
               sx={{

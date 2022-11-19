@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MenuDrawerCentral from "../../components/MenuDrawerCentral";
 import { Box } from "@mui/system";
 import { Container } from "@mui/system";
@@ -24,6 +24,17 @@ import DeleteIcon from "@mui/icons-material/Delete"
 import AddIcon from '@mui/icons-material/Add';
 import { Add } from "@mui/icons-material";
 import uuid from "react-uuid";
+
+const modalStyle = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-25%, -50%)",
+  width: "auto",
+  bgcolor: "white",
+  boxShadow: 24,
+  p: 4,
+};
 
 const boxShadowStyle = {
   padding: "10px 20px",
@@ -51,20 +62,18 @@ const titleStyle = {
   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
 }
 
-
-
-
 export default function CargarNuevoPedido(){
   const [hospital, setHospital] = useState("");
   const [medicamento, setMedicamento] = useState("");
   const [codMedicamento, setCodMedicamento] = useState(uuid());
   const [unidades, setUnidades] = useState();
-  const [formulario, setFormulario] = useState({})
+  const [formulario, setFormulario] = useState({});
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
-  const [rows, setRows] = useState([{}]);
-
+  const [rows, setRows] = useState([]);
+  const [successMessage, setSuccessMessage] = useState("")
+  const [successAlertOpen, setSuccessAlertOpen] = useState(false);
 
   /*const rows = [
     {
@@ -75,36 +84,37 @@ export default function CargarNuevoPedido(){
     },
   ];*/
 
-
-  const checkData = () => {
-    if (
-      !hospital ||
-      !medicamento ||
-      !unidades
-    ) {
-      setErrorMessage("Por favor complete todos los datos");
-      return setAlertOpen(true);
-    }
-    setOpen(true);
-  };
-
-  const handleSubmit = () => {
-    // TODO: Send data to backend
-
-    setFormulario({
-      hospital,
-      unidades,
-      medicamento,
-    });
-    //setLoading(true);
-    window.location.reload();
-  };
-
-  const handleNewRow = ()=>{
-    setRows()
+  const sendData = () => {
+    setSuccessMessage("Pedido cargado con exito")
+    setSuccessAlertOpen(true)
   }
 
-  console.log("columnas:",rows)
+  const checkData = () => {
+   if ( 
+     rows.length==0
+    ) {
+      setErrorMessage("Por favor inserte un nuevo pedido");
+      setAlertOpen(true);
+    }
+    else{setOpen(true);}
+  };
+
+  const handleNewRow = () => {
+    if(
+      !hospital||
+      !codMedicamento||
+      !unidades||
+      !medicamento
+      ){
+        setErrorMessage("Por favor complete todos los datos");
+        setAlertOpen(true);
+      }
+    else{rows.push({medicamento,codMedicamento,unidades})
+    setMedicamento("")
+    setUnidades("")}
+  }
+
+  console.log("columnas:", rows)
 
     return(
     <Container
@@ -121,37 +131,32 @@ export default function CargarNuevoPedido(){
         </Typography>
 
         <Typography variant='h5' sx={{paddingBottom:'15px'}}>Este formulario creará un nuevo pedido que sera enviado al <b style={{ color: "rgba(0, 129, 128, 0.87)" }}>hospital satelite seleccionado</b></Typography>
+        <FormControl sx={{ width: "100%", pb:'1%'}} variant="outlined">
+            <Select
+              onChange={(v) => {setHospital(v.target.value)}}
+              value={hospital}
+              displayEmpty
+              disabled = {hospital}
+            >
+              <MenuItem value="" default disabled>
+                <em>Hospital *</em>
+              </MenuItem>
+              <MenuItem value={"Garrahan"}>Gahan</MenuItem>
+            </Select>
+        </FormControl>
 
-        <Grid container spacing={2} columns={3.3}>
-
-            <Grid item xs={1}>
-                <FormControl sx={{ minWidth: "100%" }} variant="outlined">
-                  <Select
-                    onChange={(v) => setHospital(v.target.value)}
-                    value={hospital}
-                    sx={{ width: "100%" }}
-                    displayEmpty
-                  >
-                    <MenuItem value="" default disabled>
-                      <em>Hospital *</em>
-                    </MenuItem>
-                    <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-
+        <Grid container spacing={1} columns={3.3}>
               <Grid item xs={1}>
                 <FormControl sx={{ minWidth: "100%" }} variant="outlined">
                   <Select
                     onChange={(v) => setMedicamento(v.target.value)}
                     value={medicamento}
-                    sx={{ width: "100%" }}
                     displayEmpty
                   >
                     <MenuItem value="" default disabled>
                       <em>Medicamento *</em>
                     </MenuItem>
-                    <MenuItem value={"CHS0001"}>CHS0001</MenuItem>
+                    <MenuItem value={"CHS001"}>CHS001</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -174,9 +179,10 @@ export default function CargarNuevoPedido(){
                 />
               </Grid>
 
-              <Grid item xs={0.3} alignItems='center'>
-                <Button sx={{minHeight:'100%'}} variant="outlined" color='success' onClick={handleNewRow}>
-                  <b>Agregar al pedido</b>
+              <Grid item xs={0.3} >
+                <Button  variant="text" color='success' 
+                onClick={handleNewRow}
+                >Agregar al pedido
                 </Button>
               </Grid>
 
@@ -204,10 +210,12 @@ export default function CargarNuevoPedido(){
                               backgroundColor: "#f5f5f5",
                             }}
                           >
-                            <TableCell align="left">{row.Medicamento}</TableCell>
-                            <TableCell align="left">{row.Codigo_medicamento}</TableCell>
-                            <TableCell align="left">{row.Unidades}</TableCell>
-                            <TableCell align="left">
+                            <TableCell align="left">{row.medicamento}</TableCell>
+                            <TableCell align="left">{row.codMedicamento}</TableCell>
+                            <TableCell align="left">{row.unidades}</TableCell>
+                            <TableCell align="left"><IconButton onClick="">
+                                <DeleteIcon/>
+                            </IconButton>
                             </TableCell>
                           </TableRow>
                         ))}
@@ -228,14 +236,52 @@ export default function CargarNuevoPedido(){
           anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
           open={alertOpen}
           autoHideDuration={3000}
-          message="Note archived"
+          message=""
           onClose={() => setAlertOpen(false)}
         >
           <Alert severity="error" sx={{ width: "100%" }}>
             {errorMessage}
           </Alert>
         </Snackbar>
+
+        <Snackbar
+          anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+          open={successAlertOpen}
+          autoHideDuration={3000}
+          message=""
+          onClose={() => setSuccessAlertOpen(false)}
+        >
+          <Alert severity="error" sx={{ width: "100%" }}>
+            {successMessage}
+          </Alert>
+        </Snackbar>
+
       </Box>
+
+
+      <Modal
+        open={open}
+        onClose={() => setOpen(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography variant="h6" component="h2">
+            ¿Esta seguro que desea cargar este pedido con {rows.length} medicamentos diferentes?
+          </Typography>
+          <Divider sx={{ marginTop: 1, marginBottom: 2 }} />
+          <br />
+          <Container sx={{ textAlign: "center" }}>
+            <Button
+              variant="outlined"
+              onClick={sendData}
+              sx={{ marginRight: 1, width: 170 }}
+            >
+              Enviar pedido
+            </Button>
+          </Container>
+        </Box>
+      </Modal>
 
     </Container>
     )
