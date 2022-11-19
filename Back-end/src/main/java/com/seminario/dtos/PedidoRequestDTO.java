@@ -1,24 +1,18 @@
 package com.seminario.dtos;
 
+import java.util.List;
+
 public class PedidoRequestDTO {
 	
-	private Long idMedicamento;
-	private Long idHospital;
+	private List<MedicamentoRequestDTO> pedidos;
 	private String tipoEnvio;
-	private Integer cantMedicamento;
-	private String comentarios;
+	private Long idHospital;
 	
-	public Long getIdMedicamento() {
-		return idMedicamento;
+	public List<MedicamentoRequestDTO> getPedidos() {
+		return pedidos;
 	}
-	public void setIdMedicamento(Long idMedicamento) {
-		this.idMedicamento = idMedicamento;
-	}
-	public Long getIdHospital() {
-		return idHospital;
-	}
-	public void setIdHospital(Long idHospital) {
-		this.idHospital = idHospital;
+	public void setPedidos(List<MedicamentoRequestDTO> pedidos) {
+		this.pedidos = pedidos;
 	}
 	public String getTipoEnvio() {
 		return tipoEnvio;
@@ -26,16 +20,10 @@ public class PedidoRequestDTO {
 	public void setTipoEnvio(String tipoEnvio) {
 		this.tipoEnvio = tipoEnvio;
 	}
-	public Integer getCantMedicamento() {
-		return cantMedicamento;
+	public Long getIdHospital() {
+		return idHospital;
 	}
-	public void setCantMedicamento(Integer cantMedicamento) {
-		this.cantMedicamento = cantMedicamento;
-	}
-	public String getComentarios() {
-		return comentarios;
-	}
-	public void setComentarios(String comentarios) {
-		this.comentarios = comentarios;
-	}
+	public void setIdHospital(Long idHospital) {
+		this.idHospital = idHospital;
+	}	
 }

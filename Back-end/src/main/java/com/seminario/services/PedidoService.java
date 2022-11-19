@@ -4,6 +4,7 @@ import javax.validation.Valid;
 
 import com.seminario.dtos.FormularioRequestDTO;
 import com.seminario.dtos.PedidoRequestDTO;
+import com.seminario.dtos.PedidosResponseDto;
 import com.seminario.dtos.ResponseDTO;
 import com.seminario.entitys.Hospital;
 import com.seminario.entitys.Medicamento;
@@ -14,8 +15,10 @@ public interface PedidoService {
 
 	Pedido generateNewPedido(FormularioRequestDTO formularioDTO, Hospital hospital, Medicamento medicamento, Stock stock);
 
-	ResponseDTO cargaFormulario(@Valid PedidoRequestDTO pedidoDto);
+	PedidosResponseDto cargaPedido(@Valid PedidoRequestDTO pedidoDto);
 	
 	ResponseDTO updateEstadoPedido(Long idPedido);
+
+	PedidosResponseDto getPedidos();
 
 }

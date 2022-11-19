@@ -1,13 +1,17 @@
 package com.seminario.services.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
 
 import com.seminario.dtos.FormularioRequestDTO;
+import com.seminario.dtos.MedicamentoRequestDTO;
 import com.seminario.dtos.PedidoRequestDTO;
+import com.seminario.dtos.PedidosResponseDto;
 import com.seminario.dtos.ResponseDTO;
 import com.seminario.entitys.EstadoPedido;
 import com.seminario.entitys.Hospital;
@@ -53,15 +57,24 @@ public class PedidoServiceImpl implements PedidoService{
 		pedido.setIdMedicamento(medicamento.getId());
 		pedido.setMedicamento(medicamento);
 		pedido.setStockReposicion((stock.getStockSeguridad() * 2) - (stock.getStockReal() - formularioDTO.getCantAmpollas()));
-		pedido.setComentario("Pedido generado de forma automatica por el sistema");
 		pedido.setUrgencia(Boolean.FALSE);
 		return pedidoRepository.save(pedido);
 	}
 
 	@Override
-	public ResponseDTO cargaFormulario(@Valid PedidoRequestDTO pedidoDto) {
-
-		Hospital hospital = hospitalRepository.getById(pedidoDto.getIdHospital());
+	public PedidosResponseDto cargaPedido(@Valid PedidoRequestDTO pedidoDto) {
+		PedidosResponseDto response = new PedidosResponseDto();
+		List<ResponseDTO> pedidos = new ArrayList<ResponseDTO>();
+		for (MedicamentoRequestDTO medicamentoRequest : pedidoDto.getPedidos()) {
+			pedidos.add(savePedido(medicamentoRequest, pedidoDto.getTipoEnvio(), pedidoDto.getIdHospital()));
+		}
+		response.setPedidos(pedidos);
+		return response;
+	}
+	
+	private ResponseDTO savePedido (MedicamentoRequestDTO pedidoDto, String tipoPedido, Long idHospital) {
+		
+		Hospital hospital = hospitalRepository.getById(idHospital);
 		if (hospital == null) {
 			log.error("El id del hospital no coincide con ninguno existente en la base de datos");
 			return new ResponseDTO(HttpStatus.NOT_ACCEPTABLE.value(), "El id del hospital no coincide con ninguno existente en la base de datos");
@@ -87,12 +100,10 @@ public class PedidoServiceImpl implements PedidoService{
 		pedido.setIdMedicamento(medicamento.getId());
 		pedido.setMedicamento(medicamento);
 		pedido.setStockReposicion(pedidoDto.getCantMedicamento().longValue());
-		pedido.setComentario(pedidoDto.getComentarios());
-		pedido.setUrgencia("urgencia".equals(pedidoDto.getTipoEnvio()));
+		pedido.setUrgencia("urgencia".equals(tipoPedido));
 		pedido = pedidoRepository.save(pedido);
 		
 		return new ResponseDTO(HttpStatus.OK.value(), "Se realizo la carga de tu pedido #" + pedido.getId());
-
 	}
 
 	@Override
@@ -112,6 +123,13 @@ public class PedidoServiceImpl implements PedidoService{
 		} catch (Exception e) {
 			return new ResponseDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "No se puede actualizar el pedido. Error: " + e.getMessage());
 		}
+	}
+
+	@Override
+	public PedidosResponseDto getPedidos() {
+		List<Pedido> pedidos = pedidoRepository.findAll();
+		
+		return null;
 	}
 
 	

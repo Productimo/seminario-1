@@ -47,9 +47,6 @@ public class Pedido {
 	
 	@Column(name = "stock_a_reponer")
 	private Long stockReposicion;
-	
-	@Column(name = "comentario")
-	private String comentario;
 
 	@Column(name = "urgencia")
 	private Boolean urgencia;
@@ -124,14 +121,6 @@ public class Pedido {
 
 	public void setStockReposicion(Long stockReposicion) {
 		this.stockReposicion = stockReposicion;
-	}
-
-	public String getComentario() {
-		return comentario;
-	}
-
-	public void setComentario(String comentario) {
-		this.comentario = comentario;
 	}
 
 	public Boolean getUrgencia() {
