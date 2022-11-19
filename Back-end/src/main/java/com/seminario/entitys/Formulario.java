@@ -21,6 +21,18 @@ public class Formulario {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name = "id_hospital")
+	private Long idHospital;
+	
+	@Column(name = "id_medico")
+	private Long idMedico;
+	
+	@Column(name = "id_medicamento")
+	private Long idMedicamento;
+	
+	@Column(name = "id_historial")
+	private Long idHistorial;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_hospital", nullable = false)
 	private Hospital hospital;
@@ -44,7 +56,7 @@ public class Formulario {
 	private String descripcion;
 	
 	@Column(name = "cantidad_medicamentos")
-	private Long cantMedicamentoUsado;
+	private Integer cantMedicamentoUsado;
 
 	public Long getId() {
 		return id;
@@ -102,12 +114,44 @@ public class Formulario {
 		this.descripcion = descripcion;
 	}
 
-	public Long getCantMedicamentoUsado() {
+	public Integer getCantMedicamentoUsado() {
 		return cantMedicamentoUsado;
 	}
 
-	public void setCantMedicamentoUsado(Long cantMedicamentoUsado) {
+	public void setCantMedicamentoUsado(Integer cantMedicamentoUsado) {
 		this.cantMedicamentoUsado = cantMedicamentoUsado;
+	}
+
+	public Long getIdHospital() {
+		return idHospital;
+	}
+
+	public void setIdHospital(Long idHospital) {
+		this.idHospital = idHospital;
+	}
+
+	public Long getIdMedico() {
+		return idMedico;
+	}
+
+	public void setIdMedico(Long idMedico) {
+		this.idMedico = idMedico;
+	}
+
+	public Long getIdMedicamento() {
+		return idMedicamento;
+	}
+
+	public void setIdMedicamento(Long idMedicamento) {
+		this.idMedicamento = idMedicamento;
+	}
+
+	public Long getIdHistorial() {
+		return idHistorial;
+	}
+
+	public void setIdHistorial(Long idHistorial) {
+		this.idHistorial = idHistorial;
 	}
 	
 }

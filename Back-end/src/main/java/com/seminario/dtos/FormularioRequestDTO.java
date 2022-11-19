@@ -1,15 +1,19 @@
 package com.seminario.dtos;
 
+import java.util.Date;
 
 public class FormularioRequestDTO {
 	
 	private Long dniPaciente;
 	private String nombrePaciente;
-	private Integer matricula;
-	private Integer idMedicamento;
-	private Long idUsuario;
+	private String matricula;
+	private Long idMedicamento;
+	private Long idHospital;
 	private Integer cantAmpollas;
 	private String comentarios;
+	private String generoPaciente;
+	private Integer edadPaciente;
+	private Date fechaAtencion;
 	
 	public Long getDniPaciente() {
 		return dniPaciente;
@@ -23,16 +27,16 @@ public class FormularioRequestDTO {
 	public void setNombrePaciente(String nombrePaciente) {
 		this.nombrePaciente = nombrePaciente;
 	}
-	public Integer getMatricula() {
+	public String getMatricula() {
 		return matricula;
 	}
-	public void setMatricula(Integer matricula) {
+	public void setMatricula(String matricula) {
 		this.matricula = matricula;
 	}
-	public Integer getIdMedicamento() {
+	public Long getIdMedicamento() {
 		return idMedicamento;
 	}
-	public void setIdMedicamento(Integer idMedicamento) {
+	public void setIdMedicamento(Long idMedicamento) {
 		this.idMedicamento = idMedicamento;
 	}
 	public Integer getCantAmpollas() {
@@ -41,11 +45,11 @@ public class FormularioRequestDTO {
 	public void setCantAmpollas(Integer cantAmpollas) {
 		this.cantAmpollas = cantAmpollas;
 	}
-	public Long getIdUsuario() {
-		return idUsuario;
+	public Long getIdHospital() {
+		return idHospital;
 	}
-	public void setIdUsuario(Long idUsuario) {
-		this.idUsuario = idUsuario;
+	public void setIdHospital(Long idHospital) {
+		this.idHospital = idHospital;
 	}
 	public String getComentarios() {
 		return comentarios;
@@ -53,5 +57,22 @@ public class FormularioRequestDTO {
 	public void setComentarios(String comentarios) {
 		this.comentarios = comentarios;
 	}
-	
+	public String getGeneroPaciente() {
+		return generoPaciente;
+	}
+	public void setGeneroPaciente(String generoPaciente) {
+		this.generoPaciente = generoPaciente;
+	}
+	public Integer getEdadPaciente() {
+		return edadPaciente;
+	}
+	public void setEdadPaciente(Integer edadPaciente) {
+		this.edadPaciente = edadPaciente;
+	}
+	public Date getFechaAtencion() {
+		return fechaAtencion;
+	}
+	public void setFechaAtencion(Date fechaAtencion) {
+		this.fechaAtencion = fechaAtencion;
+	}
 }

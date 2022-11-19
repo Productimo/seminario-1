@@ -22,6 +22,9 @@ public class Stock {
 	@Column(name = "id_hospital")
 	private Long idHospital;
 	
+	@Column(name = "id_medicamento")
+	private Long idMedicamento;
+	
 	@ManyToOne
     @JoinColumn(name="id_hospital", nullable=false)
     private Hospital hospital;
@@ -75,4 +78,21 @@ public class Stock {
 	public void setStockSeguridad(Long stockSeguridad) {
 		this.stockSeguridad = stockSeguridad;
 	}
+
+	public Long getIdHospital() {
+		return idHospital;
+	}
+
+	public void setIdHospital(Long idHospital) {
+		this.idHospital = idHospital;
+	}
+
+	public Long getIdMedicamento() {
+		return idMedicamento;
+	}
+
+	public void setIdMedicamento(Long idMedicamento) {
+		this.idMedicamento = idMedicamento;
+	}
+	
 }

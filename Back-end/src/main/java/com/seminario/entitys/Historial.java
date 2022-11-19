@@ -21,6 +21,12 @@ public class Historial {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
+	@Column(name = "id_stock")
+	private Long idStock;
+	
+	@Column(name = "id_pedido")
+	private Long idPedido;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_stock", nullable = false)
 	private Stock stock;
@@ -37,4 +43,52 @@ public class Historial {
 	
 	@Column(name = "stock_snapshot")
 	private Long stockSnapshot;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public Stock getStock() {
+		return stock;
+	}
+
+	public void setStock(Stock stock) {
+		this.stock = stock;
+	}
+
+	public Pedido getPedido() {
+		return pedido;
+	}
+
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
+	}
+
+	public Formulario getFormulario() {
+		return formulario;
+	}
+
+	public void setFormulario(Formulario formulario) {
+		this.formulario = formulario;
+	}
+
+	public Date getFechaCarga() {
+		return fechaCarga;
+	}
+
+	public void setFechaCarga(Date fechaCarga) {
+		this.fechaCarga = fechaCarga;
+	}
+
+	public Long getStockSnapshot() {
+		return stockSnapshot;
+	}
+
+	public void setStockSnapshot(Long stockSnapshot) {
+		this.stockSnapshot = stockSnapshot;
+	}
 }

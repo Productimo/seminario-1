@@ -2,16 +2,12 @@ package com.seminario.entitys;
 
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -25,14 +21,12 @@ public class Hospital {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(name = "id_area")
+	private Long idArea;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_area", nullable = false)
 	private Area area;
-
-	//@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
-	//@JoinTable(name = "hopital_medico", joinColumns = { @JoinColumn(name = "id_hopital") }, inverseJoinColumns = {
-	//		@JoinColumn(name = "id_medico") })
-	//private Set<Medico> medicos;
 
 	@OneToMany(mappedBy="hospital")
     private Set<Stock> stockByMedicamento;
@@ -76,5 +70,29 @@ public class Hospital {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
+	}
+
+	public Long getIdArea() {
+		return idArea;
+	}
+
+	public void setIdArea(Long idArea) {
+		this.idArea = idArea;
+	}
+
+	public Set<Stock> getStockByMedicamento() {
+		return stockByMedicamento;
+	}
+
+	public void setStockByMedicamento(Set<Stock> stockByMedicamento) {
+		this.stockByMedicamento = stockByMedicamento;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 }
