@@ -1,7 +1,6 @@
 package com.seminario.controllers;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +21,7 @@ import io.swagger.annotations.ApiOperation;
 public class StockController {
 
 	@Autowired
-	private com.seminario.services.stockService stockService;
+	private com.seminario.services.StockService stockService;
 	
 	@GetMapping("/all")
     @ApiOperation(value = "User Logout")
