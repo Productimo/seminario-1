@@ -17,6 +17,8 @@ import TableRow from "@mui/material/TableRow";
 import DeleteIcon from "@mui/icons-material/Delete";
 import AddBoxIcon from "@mui/icons-material/AddBox";
 import { useNavigate } from "react-router-dom";
+import FormControl from "@mui/material/FormControl";
+import MenuItem from "@mui/material/MenuItem";
 
 
 
@@ -159,6 +161,7 @@ const rows = [
 
 export default function PedidosCentral() {
   const [stockOpen, setStockOpen] = useState(false);
+  const [año, setAño] = useState("");
 
   let navigate = useNavigate();
 
@@ -176,45 +179,92 @@ export default function PedidosCentral() {
     >
       <MenuDrawerCentral />
       <Box style={boxShadowStyle}>
+
         <Typography
-          variant="h5"
+          variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+          sx={{ paddingBottom: "25px", paddingTop: "10px", color: "#008180" }}
         >
           Pedidos
         </Typography>
+
         <Grid container spacing={2} columns={2}>
-          <Grid item xs={2} sx={{ display: "flex", justifyContent: "center" }}>
-            <ComposedChart
-              width={1100}
-              height={350}
-              data={barData}
-              margin={{
-                top: 5,
-                right: 30,
-                left: 20,
-                bottom: 5,
-              }}
-            >
-              <CartesianGrid strokeDasharray="3 3" />
-              <XAxis dataKey="name" />
-              <YAxis />
-              <ChartTooltip />
-              <Legend />
-              <Bar
-                dataKey="prev"
-                fill="#E93030"
-                unit={" pedidos"}
-                name="Cant. pedidos en 2021"
-              />
-              <Bar
-                dataKey="curr"
-                fill="#008180"
-                unit={" pedidos"}
-                name="Cant. pedidos en 2022"
-              />
-            </ComposedChart>
+          
+          <Grid item xs={2}>
+                <Typography
+                  variant="h4"
+                  component="div"
+                  sx={{ paddingBottom: "25px", paddingTop: "10px", color: "#008180" }}
+                >
+                  Pedidos 2021 vs 2022
+                </Typography>
           </Grid>
+
+          <Grid item xs={1}>
+            <FormControl sx={{ minWidth: "100%", paddingBottom: "50px" }} variant="outlined">
+              <Select
+                onChange={(v) => setAño(v.target.value)}
+                value={año}
+                sx={{ width: "100%" }}
+                displayEmpty
+              >
+                <MenuItem value="" default disabled>
+                  <em>Año 1*</em>
+                </MenuItem>
+                <MenuItem value={"Año"}>2021</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={1}>
+            <FormControl sx={{ minWidth: "100%"}} variant="outlined">
+              <Select
+                onChange={(v) => setAño(v.target.value)}
+                value={año}
+                sx={{ width: "100%" }}
+                displayEmpty
+              >
+                <MenuItem value="" default disabled>
+                  <em>Año 2*</em>
+                </MenuItem>
+                <MenuItem value={"Año"}>2022</MenuItem>
+              </Select>
+            </FormControl>
+          
+          </Grid>
+          
+          <Grid item xs={2} justifyContent="center" alignContent="center">
+                <ComposedChart
+                  width={1500}
+                  height={350}
+                  data={barData}
+                  margin={{
+                    top: 5,
+                    right: 30,
+                    left: 20,
+                    bottom: 5,
+                  }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" />
+                  <XAxis dataKey="name" />
+                  <YAxis />
+                  <ChartTooltip />
+                  <Legend />
+                  <Bar
+                    dataKey="prev"
+                    fill="#E93030"
+                    unit={" pedidos"}
+                    name="Cant. pedidos en 2021"
+                  />
+                  <Bar
+                    dataKey="curr"
+                    fill="#008180"
+                    unit={" pedidos"}
+                    name="Cant. pedidos en 2022"
+                  />
+                </ComposedChart>
+          </Grid>
+          
+        
           <Grid item xs={2}>
             <Box
               sx={{
@@ -293,14 +343,14 @@ export default function PedidosCentral() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell>Hospital</TableCell>
-                    <TableCell>Referencia pedido</TableCell>
-                    <TableCell>Nombre de medicamento</TableCell>
-                    <TableCell>Fecha del pedido</TableCell>
-                    <TableCell>Cantidad</TableCell>
-                    <TableCell>Tipo</TableCell>
-                    <TableCell>Estado</TableCell>
-                    <TableCell>Acción</TableCell>
+                    <TableCell><b>Hospital</b></TableCell>
+                    <TableCell><b>Referencia pedido</b></TableCell>
+                    <TableCell><b>Nombre de medicamento</b></TableCell>
+                    <TableCell><b>Fecha del pedido</b></TableCell>
+                    <TableCell><b>Cantidad</b></TableCell>
+                    <TableCell><b>Tipo</b></TableCell>
+                    <TableCell><b>Estado</b></TableCell>
+                    <TableCell><b>Acción</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
