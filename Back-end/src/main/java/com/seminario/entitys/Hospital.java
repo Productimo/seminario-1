@@ -19,9 +19,6 @@ public class Hospital {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@Column(name = "id_area")
-	private Long idArea;
-
 	@OneToMany(mappedBy="hospital")
     private Set<Stock> stockByMedicamento;
 	
@@ -56,14 +53,6 @@ public class Hospital {
 
 	public void setDireccion(String direccion) {
 		this.direccion = direccion;
-	}
-
-	public Long getIdArea() {
-		return idArea;
-	}
-
-	public void setIdArea(Long idArea) {
-		this.idArea = idArea;
 	}
 
 	public Set<Stock> getStockByMedicamento() {

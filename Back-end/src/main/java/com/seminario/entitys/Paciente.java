@@ -14,9 +14,6 @@ public class Paciente {
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long dni;
-	
-	@Column(name = "id_area")
-	private Long idArea;
 
 	@Column(name = "nombre")
 	private String nombre;
@@ -57,14 +54,6 @@ public class Paciente {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
-	}
-
-	public Long getIdArea() {
-		return idArea;
-	}
-
-	public void setIdArea(Long idArea) {
-		this.idArea = idArea;
 	}
 
 }

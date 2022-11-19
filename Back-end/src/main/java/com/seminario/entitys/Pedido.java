@@ -21,13 +21,13 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "id_hospital")
+	@Column(name = "id_hospital", insertable = false,  updatable = false)
 	private Long idHospital;
 
-	@Column(name = "id_estado")
+	@Column(name = "id_estado", insertable = false,  updatable = false)
 	private Long idEstado;
 	
-	@Column(name = "id_medicamento")
+	@Column(name = "id_medicamento", insertable = false,  updatable = false)
 	private Long idMedicamento;
 	
 	@ManyToOne

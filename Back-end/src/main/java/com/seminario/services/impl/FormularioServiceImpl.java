@@ -83,7 +83,7 @@ public class FormularioServiceImpl implements FormularioService{
 		Paciente paciente = pacienteRepository.getById(formularioDTO.getDniPaciente());
 		if (paciente == null) {
 			log.info("Se genera nuevo paciente con DNI: " + formularioDTO.getDniPaciente());
-			genereateNewPaciente(formularioDTO, hospital.getIdArea());
+			genereateNewPaciente(formularioDTO);
 		}
 		
 		Stock stock = stockService.findByHospitalAndMedicamento(hospital.getId(), medicamento.getId());
@@ -137,11 +137,10 @@ public class FormularioServiceImpl implements FormularioService{
 
 
 
-	private void genereateNewPaciente(FormularioRequestDTO formulario, Long idArea) {
+	private void genereateNewPaciente(FormularioRequestDTO formulario) {
 		Paciente paciente = new Paciente();
 		paciente.setNombre(formulario.getNombrePaciente());
 		paciente.setDni(formulario.getDniPaciente());
-		paciente.setIdArea(idArea);
 		paciente.setGenero(formulario.getGeneroPaciente());
 		paciente.setEdad(formulario.getEdadPaciente());
 		

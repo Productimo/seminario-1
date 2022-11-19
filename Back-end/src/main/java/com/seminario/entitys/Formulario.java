@@ -21,16 +21,16 @@ public class Formulario {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "id_hospital")
+	@Column(name = "id_hospital", insertable = false,  updatable = false)
 	private Long idHospital;
 	
-	@Column(name = "id_medico")
+	@Column(name = "id_medico", insertable = false,  updatable = false)
 	private Long idMedico;
 	
-	@Column(name = "id_medicamento")
+	@Column(name = "id_medicamento", insertable = false,  updatable = false)
 	private Long idMedicamento;
 	
-	@Column(name = "id_historial")
+	@Column(name = "id_historial", insertable = false,  updatable = false)
 	private Long idHistorial;
 	
 	@ManyToOne
