@@ -1,13 +1,8 @@
 package com.seminario.entitys;
 
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,7 +10,7 @@ import javax.persistence.Table;
 public class Medico {
 
 	@Id
-	private Integer dni;
+	private Long dni;
 
 	//@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE }, mappedBy = "tags")
 	//private List<Hospital> hospitales;
@@ -29,11 +24,11 @@ public class Medico {
 	@Column(name = "matricula")
 	private String matricula;
 
-	public Integer getDni() {
+	public Long getDni() {
 		return dni;
 	}
 
-	public void setDni(Integer dni) {
+	public void setDni(Long dni) {
 		this.dni = dni;
 	}
 

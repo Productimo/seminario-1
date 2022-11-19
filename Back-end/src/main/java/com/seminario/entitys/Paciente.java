@@ -17,15 +17,15 @@ public class Paciente {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long dni;
 	
+	@Column(name = "id_area")
+	private Long idArea;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_area", nullable = false)
 	private Area area;
 
 	@Column(name = "nombre")
 	private String nombre;
-
-	@Column(name = "apellido")
-	private String apellido;
 	
 	@Column(name = "edad")
 	private Integer edad;
@@ -57,14 +57,6 @@ public class Paciente {
 		this.nombre = nombre;
 	}
 
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
 	public Integer getEdad() {
 		return edad;
 	}
@@ -79,6 +71,14 @@ public class Paciente {
 
 	public void setGenero(String genero) {
 		this.genero = genero;
+	}
+
+	public Long getIdArea() {
+		return idArea;
+	}
+
+	public void setIdArea(Long idArea) {
+		this.idArea = idArea;
 	}
 
 }

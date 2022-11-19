@@ -9,4 +9,5 @@ import com.seminario.entitys.Stock;
 public interface StockRepository extends JpaRepository<Stock, Long> {
 	
 	List<Stock> findByIdHospital(Long idHospital);
+	Stock findByIdHospitalAndIdMedicamento(Long idHospital, Long idMedicamento);
 }

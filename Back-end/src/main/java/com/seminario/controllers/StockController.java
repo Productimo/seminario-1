@@ -22,7 +22,7 @@ import io.swagger.annotations.ApiOperation;
 public class StockController {
 
 	@Autowired
-	private com.seminario.services.stockService stockService;
+	private com.seminario.services.StockService stockService;
 	
 	@GetMapping("/all")
     @ApiOperation(value = "User Logout")
