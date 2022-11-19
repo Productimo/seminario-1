@@ -4,13 +4,13 @@ import java.util.List;
 
 public class PedidosResponseDto {
 	
-	private List<ResponseDTO> pedidos;
+	private List<PedidoDTO> pedidos;
 
-	public List<ResponseDTO> getPedidos() {
+	public List<PedidoDTO> getPedidos() {
 		return pedidos;
 	}
 
-	public void setPedidos(List<ResponseDTO> pedidos) {
+	public void setPedidos(List<PedidoDTO> pedidos) {
 		this.pedidos = pedidos;
 	}
 }

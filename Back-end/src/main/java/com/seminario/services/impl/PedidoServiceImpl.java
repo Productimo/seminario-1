@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 
 import com.seminario.dtos.FormularioRequestDTO;
 import com.seminario.dtos.MedicamentoRequestDTO;
+import com.seminario.dtos.PedidoCargaResponseDTO;
+import com.seminario.dtos.PedidoDTO;
 import com.seminario.dtos.PedidoRequestDTO;
 import com.seminario.dtos.PedidosResponseDto;
 import com.seminario.dtos.ResponseDTO;
@@ -62,13 +64,13 @@ public class PedidoServiceImpl implements PedidoService{
 	}
 
 	@Override
-	public PedidosResponseDto cargaPedido(@Valid PedidoRequestDTO pedidoDto) {
-		PedidosResponseDto response = new PedidosResponseDto();
+	public PedidoCargaResponseDTO cargaPedido(@Valid PedidoRequestDTO pedidoDto) {
+		PedidoCargaResponseDTO response = new PedidoCargaResponseDTO();
 		List<ResponseDTO> pedidos = new ArrayList<ResponseDTO>();
 		for (MedicamentoRequestDTO medicamentoRequest : pedidoDto.getPedidos()) {
 			pedidos.add(savePedido(medicamentoRequest, pedidoDto.getTipoEnvio(), pedidoDto.getIdHospital()));
 		}
-		response.setPedidos(pedidos);
+		response.setResponse(pedidos);
 		return response;
 	}
 	
@@ -128,8 +130,21 @@ public class PedidoServiceImpl implements PedidoService{
 	@Override
 	public PedidosResponseDto getPedidos() {
 		List<Pedido> pedidos = pedidoRepository.findAll();
-		
-		return null;
+		PedidosResponseDto response = new PedidosResponseDto();
+		List<PedidoDTO> pedidosDTO = new ArrayList<PedidoDTO>();
+		for (Pedido pedido : pedidos) {
+			PedidoDTO pedidoDto = new PedidoDTO();
+			pedidoDto.setCantMedicamento(pedido.getStockReposicion().intValue());
+			pedidoDto.setEstado(pedido.getEstado().getEstado());
+			pedidoDto.setFechaPedido(pedido.getFechaPedido());
+			pedidoDto.setHospital(pedido.getHospital().getNombre());
+			pedidoDto.setIdPedido(pedido.getId());
+			pedidoDto.setMedicamento(pedido.getMedicamento().getNombre());
+			pedidoDto.setTipoPedido(pedido.getUrgencia() ? "urgencia" : "estandar");
+			pedidosDTO.add(pedidoDto);
+		}
+		response.setPedidos(pedidosDTO);
+		return response;
 	}
 
 	

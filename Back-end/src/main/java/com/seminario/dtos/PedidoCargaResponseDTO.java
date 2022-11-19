@@ -2,7 +2,7 @@ package com.seminario.dtos;
 
 import java.util.List;
 
-public class PedidoResponseDTO {
+public class PedidoCargaResponseDTO {
 
 	private List<ResponseDTO> response;
 

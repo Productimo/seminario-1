@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -23,10 +21,6 @@ public class Hospital {
 
 	@Column(name = "id_area")
 	private Long idArea;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_area", nullable = false)
-	private Area area;
 
 	@OneToMany(mappedBy="hospital")
     private Set<Stock> stockByMedicamento;
@@ -46,14 +40,6 @@ public class Hospital {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Area getArea() {
-		return area;
-	}
-
-	public void setArea(Area area) {
-		this.area = area;
 	}
 
 	public String getNombre() {

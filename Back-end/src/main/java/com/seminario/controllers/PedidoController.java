@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.seminario.dtos.PedidoCargaResponseDTO;
 import com.seminario.dtos.PedidoRequestDTO;
 import com.seminario.dtos.PedidosResponseDto;
 import com.seminario.dtos.ResponseDTO;
@@ -32,8 +33,8 @@ public class PedidoController {
 	
     @PostMapping("/pedido/envio")
     @ApiOperation(value = "Carga Pedido")
-    public ResponseEntity<PedidosResponseDto> envioPedido(@Valid @RequestBody PedidoRequestDTO pedidoDto) {
-    	PedidosResponseDto response = pedidoService.cargaPedido(pedidoDto);
+    public ResponseEntity<PedidoCargaResponseDTO> envioPedido(@Valid @RequestBody PedidoRequestDTO pedidoDto) {
+    	PedidoCargaResponseDTO response = pedidoService.cargaPedido(pedidoDto);
         return ResponseEntity.ok(response);
     }
     
