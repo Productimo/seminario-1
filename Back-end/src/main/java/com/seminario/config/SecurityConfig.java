@@ -21,7 +21,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final String ENDPOINT_REGISTER_USER = "/api/user/**";
+    private static final String ENDPOINT_REGISTER_USER = "/api/**";
     private static final String ROLE_NEEDED = "USER_ROLE";
     private static final String[] ENDPOINTS_AUTH = {
             "/api/**"};

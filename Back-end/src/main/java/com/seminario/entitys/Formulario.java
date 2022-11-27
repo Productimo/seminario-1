@@ -33,9 +33,16 @@ public class Formulario {
 	@Column(name = "id_historial", insertable = false,  updatable = false)
 	private Long idHistorial;
 	
+	@Column(name = "id_paciente", insertable = false,  updatable = false)
+	private Long idPaciente;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_hospital", nullable = false)
 	private Hospital hospital;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_paciente", nullable = false)
+	private Paciente paciente;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_medico", nullable = false)
@@ -153,5 +160,20 @@ public class Formulario {
 	public void setIdHistorial(Long idHistorial) {
 		this.idHistorial = idHistorial;
 	}
-	
+
+	public Long getIdPaciente() {
+		return idPaciente;
+	}
+
+	public void setIdPaciente(Long idPaciente) {
+		this.idPaciente = idPaciente;
+	}
+
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
+	public void setPaciente(Paciente paciente) {
+		this.paciente = paciente;
+	}
 }

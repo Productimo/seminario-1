@@ -6,7 +6,7 @@ public class FormularioRequestDTO {
 	
 	private Long dniPaciente;
 	private String nombrePaciente;
-	private String matricula;
+	private Long dniMedico;
 	private Long idMedicamento;
 	private Long idHospital;
 	private Integer cantAmpollas;
@@ -26,12 +26,6 @@ public class FormularioRequestDTO {
 	}
 	public void setNombrePaciente(String nombrePaciente) {
 		this.nombrePaciente = nombrePaciente;
-	}
-	public String getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
 	}
 	public Long getIdMedicamento() {
 		return idMedicamento;
@@ -74,5 +68,11 @@ public class FormularioRequestDTO {
 	}
 	public void setFechaAtencion(Date fechaAtencion) {
 		this.fechaAtencion = fechaAtencion;
+	}
+	public Long getDniMedico() {
+		return dniMedico;
+	}
+	public void setDniMedico(Long dniMedico) {
+		this.dniMedico = dniMedico;
 	}
 }

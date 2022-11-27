@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class Paciente {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long dni;
 
 	@Column(name = "nombre")
