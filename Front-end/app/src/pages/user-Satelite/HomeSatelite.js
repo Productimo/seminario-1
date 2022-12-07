@@ -131,6 +131,7 @@ const rowsPacientes = [
 
 export default function HomeSatelite() {
   const [reportOpen, setReportOpen] = useState(false);
+  const [reportOpenMedicacion, setReportOpenMedicacion] = useState(false);
 
   return (
     <Container
@@ -145,11 +146,11 @@ export default function HomeSatelite() {
         <Grid container spacing={2} columns={4}>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
-              sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+              sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
             >
-              Medicamentos con <b style={{ color: "#FF0000" }}>bajo stock</b>
+              Medicamentos a punto de <b style={{ color: "#FF0000" }}>quebrar stock</b>
             </Typography>
             <br />
             <br />
@@ -161,8 +162,8 @@ export default function HomeSatelite() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell>Medicamento</TableCell>
-                    <TableCell>Stock</TableCell>
+                    <TableCell><b>Medicamento</b></TableCell>
+                    <TableCell><b>Stock</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -188,7 +189,7 @@ export default function HomeSatelite() {
           </Grid>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
@@ -217,9 +218,9 @@ export default function HomeSatelite() {
           </Grid>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
-              sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+              sx={{ paddingBottom: "25px", paddingTop: "10px"}}
             >
               Últimos 10 <b style={{ color: "#008180" }}>pacientes</b> atendidos
             </Typography>
@@ -233,9 +234,9 @@ export default function HomeSatelite() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell>Paciente</TableCell>
-                    <TableCell>Medicamento utilizado</TableCell>
-                    <TableCell>Cantidad utilizada</TableCell>
+                    <TableCell><b>Paciente</b></TableCell>
+                    <TableCell><b>Medicamento utilizado</b></TableCell>
+                    <TableCell><b>Cantidad utilizada</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -260,7 +261,7 @@ export default function HomeSatelite() {
           </Grid>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
@@ -285,7 +286,7 @@ export default function HomeSatelite() {
                 component="span"
                 sx={{ paddingLeft: "25px" }}
               >
-                <a href="#" onClick={() => setReportOpen(true)}>
+                <a href="#" onClick={() => setReportOpenMedicacion(true)}>
                   Uso de medicación
                 </a>
               </Typography>
@@ -319,6 +320,34 @@ export default function HomeSatelite() {
           </Container>
         </Box>
       </Modal>
+
+      <Modal
+        open={reportOpenMedicacion}
+        onClose={() => setReportOpenMedicacion(false)}
+        aria-labelledby="modal-modal-title"
+        aria-describedby="modal-modal-description"
+      >
+        <Box sx={modalStyle}>
+          <Typography variant="h6" component="h2">
+            Esto descargará un reporte del uso de la medicacion en <b sx={{color:"rgba(0, 129, 128, 0.87)"}}>este hospital</b>
+          </Typography>
+          <Divider sx={{ marginTop: 1, marginBottom: 2 }} />
+          <br />
+          <Container
+            sx={{ textAlign: "center", marginTop: "20px", padding: 0 }}
+          >
+            <Button
+              variant="contained"
+              onClick={() => setReportOpenMedicacion(false)}
+              sx={{ width: "100%" }}
+            >
+              DESCARGAR
+            </Button>
+          </Container>
+        </Box>
+      </Modal>
+
+
     </Container>
   );
 }

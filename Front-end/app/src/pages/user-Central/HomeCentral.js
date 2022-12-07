@@ -140,11 +140,11 @@ export default function HomeCentral() {
         <Grid container spacing={2} columns={4}>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
-              sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+              sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
             >
-              Medicamentos a punto de{" "}
+              <b>Medicamentos a punto de{" "}</b>
               <b style={{ color: "#FF0000" }}>quebrar stock</b>
             </Typography>
             <br />
@@ -186,7 +186,7 @@ export default function HomeCentral() {
           </Grid>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
@@ -215,7 +215,7 @@ export default function HomeCentral() {
           </Grid>
           <Grid item xs={2}>
             <Typography
-              variant="h5"
+              variant="h4"
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
@@ -252,8 +252,8 @@ export default function HomeCentral() {
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
-              Cuantos pacientes hay en proporcion en cada hospital en{" "}
-              <b style={{ color: "#008180" }}>Noviembre</b>
+              ¿Cuantos pacientes hay en proporcion en cada hospital en{" "}
+              <b style={{ color: "#008180" }}>Noviembre</b>?
             </Typography>
             <PieChart width={700} height={400}>
               <Pie

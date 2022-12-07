@@ -164,9 +164,9 @@ export default function GestionDeStockSatelite() {
       <MenuDrawerSatelite />
       <Box style={boxShadowStyle}>
         <Typography
-          variant="h5"
+          variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+          sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
         >
           Stock
         </Typography>
@@ -259,9 +259,9 @@ export default function GestionDeStockSatelite() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell>Código de medicamento</TableCell>
-                    <TableCell>Nombre de medicamento</TableCell>
-                    <TableCell>Stock</TableCell>
+                    <TableCell><b>Código de medicamento</b></TableCell>
+                    <TableCell><b>Nombre de medicamento</b></TableCell>
+                    <TableCell><b>Stock</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

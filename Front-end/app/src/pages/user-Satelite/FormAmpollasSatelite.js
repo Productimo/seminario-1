@@ -93,9 +93,9 @@ export default function FormAmpollasSatelite() {
       <MenuDrawerSatelite />
       <Box style={boxShadowStyle}>
         <Typography
-          variant="h5"
+          variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+          sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
         >
           Ingreso de nueva atención
         </Typography>

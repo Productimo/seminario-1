@@ -87,6 +87,7 @@ export default function CargarNuevoPedido(){
   const sendData = () => {
     setSuccessMessage("Pedido cargado con exito")
     setSuccessAlertOpen(true)
+    window.location.reload();
   }
 
   const checkData = () => {
@@ -111,7 +112,8 @@ export default function CargarNuevoPedido(){
       }
     else{rows.push({medicamento,codMedicamento,unidades})
     setMedicamento("")
-    setUnidades("")}
+    setUnidades("")
+    }
   }
 
   console.log("columnas:", rows)
@@ -141,7 +143,7 @@ export default function CargarNuevoPedido(){
               <MenuItem value="" default disabled>
                 <em>Hospital *</em>
               </MenuItem>
-              <MenuItem value={"Garrahan"}>Gahan</MenuItem>
+              <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
             </Select>
         </FormControl>
 
@@ -156,7 +158,7 @@ export default function CargarNuevoPedido(){
                     <MenuItem value="" default disabled>
                       <em>Medicamento *</em>
                     </MenuItem>
-                    <MenuItem value={"CHS001"}>CHS001</MenuItem>
+                    <MenuItem value={"Ibuprofeno"}>Ibuprofeno</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>

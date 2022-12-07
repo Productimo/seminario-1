@@ -160,9 +160,9 @@ export default function PedidosSatelite() {
       <MenuDrawerSatelite />
       <Box style={boxShadowStyle}>
         <Typography
-          variant="h5"
+          variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px" }}
+          sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
         >
           Pedidos
         </Typography>
@@ -243,13 +243,13 @@ export default function PedidosSatelite() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell>Código de medicamento</TableCell>
-                    <TableCell>Nombre de medicamento</TableCell>
-                    <TableCell>Fecha del pedido</TableCell>
-                    <TableCell>Cantidad</TableCell>
-                    <TableCell>Tipo</TableCell>
-                    <TableCell>Estado</TableCell>
-                    <TableCell>Acción</TableCell>
+                    <TableCell><b>Código de medicamento</b></TableCell>
+                    <TableCell><b>Nombre de medicamento</b></TableCell>
+                    <TableCell><b>Fecha del pedido</b></TableCell>
+                    <TableCell><b>Cantidad</b></TableCell>
+                    <TableCell><b>Tipo</b></TableCell>
+                    <TableCell><b>Estado</b></TableCell>
+                    <TableCell><b>Acción</b></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

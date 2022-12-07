@@ -12,7 +12,6 @@ import LoadingButton from "@mui/lab/LoadingButton";
 const bgStyle = {
   minWidth: "100vw",
   minHeight: "100vh",
-  backgroundColor: "#F1FDF2",
   position: "relative",
 };
 

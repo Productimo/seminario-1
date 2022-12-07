@@ -261,13 +261,8 @@ export default function PedidosCentral() {
                   />
                 </ComposedChart>
           </Grid>
-<<<<<<< HEAD
-
-          
-=======
           
         
->>>>>>> ff7f077647b93c9245b83c09cb194e651ef17e73
           <Grid item xs={2}>
             <Box
               sx={{
