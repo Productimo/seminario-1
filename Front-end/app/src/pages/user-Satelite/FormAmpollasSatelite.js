@@ -153,7 +153,8 @@ export default function FormAmpollasSatelite() {
                 <MenuItem value="" default disabled>
                   <em>Medico que realizó la atención *</em>
                 </MenuItem>
-                <MenuItem value={"medico1"}>Medico 1</MenuItem>
+                <MenuItem value={"medico1"}>Jorge Fernandez</MenuItem>
+                <MenuItem value={"medico1"}>Lorena Bravo </MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -168,7 +169,9 @@ export default function FormAmpollasSatelite() {
                 <MenuItem value="" default disabled>
                   <em>Código medicamento *</em>
                 </MenuItem>
-                <MenuItem value={"CHS0001"}>CHS0001</MenuItem>
+                <MenuItem value={"CHS0001"}>HEM0001</MenuItem>
+                <MenuItem value={"CHS0002"}>HEM0002</MenuItem>
+                <MenuItem value={"CHS0003"}>HEM0003</MenuItem>
               </Select>
             </FormControl>
           </Grid>

@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
 import { useState } from "react";
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,8 +20,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
-import DeleteIcon from "@mui/icons-material/Delete"
-import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 import { Add } from "@mui/icons-material";
 import uuid from "react-uuid";
 
@@ -41,7 +41,7 @@ const titleStyle = {
   top: "15.77%",
   bottom: "82%",
 
-  fontFamily: 'Roboto',
+  fontFamily: "Roboto",
   fontStyle: "normal",
   fontWeight: "500",
   fontSize: "96px",
@@ -49,22 +49,18 @@ const titleStyle = {
   letterSpacing: "0.17px",
   color: "rgba(0, 129, 128, 0.87)",
   textShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
-}
+};
 
-
-
-
-export default function CargarNuevoPedido(){
+export default function CargarNuevoPedido() {
   const [hospital, setHospital] = useState("");
   const [medicamento, setMedicamento] = useState("");
   const [codMedicamento, setCodMedicamento] = useState(uuid());
   const [unidades, setUnidades] = useState();
-  const [formulario, setFormulario] = useState({})
+  const [formulario, setFormulario] = useState({});
   const [alertOpen, setAlertOpen] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [open, setOpen] = useState(false);
   const [rows, setRows] = useState([{}]);
-
 
   /*const rows = [
     {
@@ -75,13 +71,8 @@ export default function CargarNuevoPedido(){
     },
   ];*/
 
-
   const checkData = () => {
-    if (
-      !hospital ||
-      !medicamento ||
-      !unidades
-    ) {
+    if (!hospital || !medicamento || !unidades) {
       setErrorMessage("Por favor complete todos los datos");
       return setAlertOpen(true);
     }
@@ -100,128 +91,154 @@ export default function CargarNuevoPedido(){
     window.location.reload();
   };
 
-  const handleNewRow = ()=>{
-    setRows()
-  }
+  const handleNewRow = () => {
+    setRows();
+  };
 
-  console.log("columnas:",rows)
+  console.log("columnas:", rows);
 
-    return(
+  return (
     <Container
       sx={{ display: "flex", minWidth: "100%", padding: "20px" }}
-      disableGutters>
-        <MenuDrawerCentral/>
-        <Box style={boxShadowStyle}>
+      disableGutters
+    >
+      <MenuDrawerCentral />
+      <Box style={boxShadowStyle}>
         <Typography
           variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
+          sx={{
+            paddingBottom: "25px",
+            paddingTop: "10px",
+            color: "rgba(0, 129, 128, 0.87)",
+          }}
         >
           Cargar nuevo pedido
         </Typography>
 
-        <Typography variant='h5' sx={{paddingBottom:'15px'}}>Este formulario creará un nuevo pedido que sera enviado al <b style={{ color: "rgba(0, 129, 128, 0.87)" }}>hospital satelite seleccionado</b></Typography>
+        <Typography variant="h5" sx={{ paddingBottom: "15px" }}>
+          Este formulario creará un nuevo pedido que sera enviado al{" "}
+          <b style={{ color: "rgba(0, 129, 128, 0.87)" }}>
+            hospital satelite seleccionado
+          </b>
+        </Typography>
 
         <Grid container spacing={2} columns={3.3}>
+          <Grid item xs={1}>
+            <FormControl sx={{ minWidth: "100%" }} variant="outlined">
+              <Select
+                onChange={(v) => setHospital(v.target.value)}
+                value={hospital}
+                sx={{ width: "100%" }}
+                displayEmpty
+              >
+                <MenuItem value="" default disabled>
+                  <em>Hospital *</em>
+                </MenuItem>
+                <MenuItem value={"Rivadavia"}>Rivadavia</MenuItem>
+                <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
+                <MenuItem value={"Udaondo"}>Udaondo</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
 
-            <Grid item xs={1}>
-                <FormControl sx={{ minWidth: "100%" }} variant="outlined">
-                  <Select
-                    onChange={(v) => setHospital(v.target.value)}
-                    value={hospital}
-                    sx={{ width: "100%" }}
-                    displayEmpty
+          <Grid item xs={1}>
+            <FormControl sx={{ minWidth: "100%" }} variant="outlined">
+              <Select
+                onChange={(v) => setMedicamento(v.target.value)}
+                value={medicamento}
+                sx={{ width: "100%" }}
+                displayEmpty
+              >
+                <MenuItem value="" default disabled>
+                  <em>Medicamento *</em>
+                </MenuItem>
+                <MenuItem value={"CHS0001"}>HEM0001</MenuItem>
+                <MenuItem value={"CHS0002"}>HEM0002</MenuItem>
+                <MenuItem value={"CHS0003"}>HEM0003</MenuItem>
+              </Select>
+            </FormControl>
+          </Grid>
+
+          <Grid item xs={1}>
+            <TextField
+              label="Unidades *"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <ProductionQuantityLimitsIcon sx={{ color: "teal" }} />
+                  </InputAdornment>
+                ),
+              }}
+              variant="outlined"
+              onChange={(v) => setUnidades(v.target.value)}
+              value={unidades}
+              sx={{ width: "100%" }}
+              type="number"
+            />
+          </Grid>
+
+          <Grid item xs={0.3} alignItems="center">
+            <Button
+              sx={{ minHeight: "100%" }}
+              variant="outlined"
+              color="success"
+              onClick={handleNewRow}
+            >
+              <b>Agregar al pedido</b>
+            </Button>
+          </Grid>
+
+          <Grid item xs={3.3}>
+            <TableContainer component={Paper} sx={{}}>
+              <Table aria-label="simple table">
+                <TableHead>
+                  <TableRow
+                    sx={{
+                      backgroundColor: "#f5f5f5",
+                    }}
                   >
-                    <MenuItem value="" default disabled>
-                      <em>Hospital *</em>
-                    </MenuItem>
-                    <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
+                    <TableCell align="left">
+                      <b>Medicamento</b>
+                    </TableCell>
+                    <TableCell align="left">
+                      <b>Codigo medicamento</b>
+                    </TableCell>
+                    <TableCell align="left">
+                      <b>Unidades</b>
+                    </TableCell>
+                    <TableCell align="left">
+                      <b>Acciones</b>
+                    </TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {rows.map((row) => (
+                    <TableRow
+                      key={row.Codigo_medicamento}
+                      sx={{
+                        "&:last-child td, &:last-child th": { border: 0 },
+                        backgroundColor: "#f5f5f5",
+                      }}
+                    >
+                      <TableCell align="left">{row.Medicamento}</TableCell>
+                      <TableCell align="left">
+                        {row.Codigo_medicamento}
+                      </TableCell>
+                      <TableCell align="left">{row.Unidades}</TableCell>
+                      <TableCell align="left"></TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </TableContainer>
+          </Grid>
 
-              <Grid item xs={1}>
-                <FormControl sx={{ minWidth: "100%" }} variant="outlined">
-                  <Select
-                    onChange={(v) => setMedicamento(v.target.value)}
-                    value={medicamento}
-                    sx={{ width: "100%" }}
-                    displayEmpty
-                  >
-                    <MenuItem value="" default disabled>
-                      <em>Medicamento *</em>
-                    </MenuItem>
-                    <MenuItem value={"CHS0001"}>CHS0001</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-
-              <Grid item xs={1}>
-                <TextField
-                  label="Unidades *"
-                  InputProps={{
-                    startAdornment: (
-                      <InputAdornment position="start">
-                        <ProductionQuantityLimitsIcon sx={{ color: "teal" }} />
-                      </InputAdornment>
-                    ),
-                  }}
-                  variant="outlined"
-                  onChange={(v) => setUnidades(v.target.value)}
-                  value={unidades}
-                  sx={{ width: "100%" }}
-                  type="number"
-                />
-              </Grid>
-
-              <Grid item xs={0.3} alignItems='center'>
-                <Button sx={{minHeight:'100%'}} variant="outlined" color='success' onClick={handleNewRow}>
-                  <b>Agregar al pedido</b>
-                </Button>
-              </Grid>
-
-              <Grid item xs={3.3}>
-                  <TableContainer component={Paper} sx={{}}>
-                    <Table aria-label="simple table">
-                      <TableHead>
-                        <TableRow
-                          sx={{
-                            backgroundColor: "#f5f5f5",
-                          }}
-                        >
-                          <TableCell align="left"><b>Medicamento</b></TableCell>
-                          <TableCell align="left"><b>Codigo medicamento</b></TableCell>
-                          <TableCell align="left"><b>Unidades</b></TableCell>
-                          <TableCell align="left"><b>Acciones</b></TableCell>
-                        </TableRow>
-                      </TableHead>
-                      <TableBody>
-                        {rows.map((row) => (
-                          <TableRow
-                            key={row.Codigo_medicamento}
-                            sx={{
-                              "&:last-child td, &:last-child th": { border: 0 },
-                              backgroundColor: "#f5f5f5",
-                            }}
-                          >
-                            <TableCell align="left">{row.Medicamento}</TableCell>
-                            <TableCell align="left">{row.Codigo_medicamento}</TableCell>
-                            <TableCell align="left">{row.Unidades}</TableCell>
-                            <TableCell align="left">
-                            </TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </TableContainer>
-              </Grid>
-
-              <Grid item xs={4} sx={{ textAlign: "center" }}>
-                <Button variant="contained" onClick={checkData}>
-                  CONTINUAR
-                </Button>
-              </Grid>
-
+          <Grid item xs={4} sx={{ textAlign: "center" }}>
+            <Button variant="contained" onClick={checkData}>
+              CONTINUAR
+            </Button>
+          </Grid>
         </Grid>
 
         <Snackbar
@@ -236,7 +253,6 @@ export default function CargarNuevoPedido(){
           </Alert>
         </Snackbar>
       </Box>
-
     </Container>
-    )
+  );
 }

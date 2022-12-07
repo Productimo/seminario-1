@@ -118,32 +118,32 @@ const rows = [
   {
     codigo: "HEMO001",
     nombre: "Factor VIII Octapharma",
-    fecha: "25/10/2022",
-    cantidad: 25,
+    fecha: "04/12/2022",
+    cantidad: "25 unidades",
     tipo: "Estandar",
     estado: "En preparación",
   },
   {
     codigo: "HEMO001",
     nombre: "Factor VIII Octapharma",
-    fecha: "18/10/2022",
-    cantidad: 40,
-    tipo: "Estandar",
+    fecha: "01/12/2022",
+    cantidad: "5 unidades",
+    tipo: "Urgencia",
     estado: "En preparación",
   },
   {
-    codigo: "HEMO004",
-    nombre: "Salbutamol",
+    codigo: "HEMO003",
+    nombre: "Factor VIII Koate",
     fecha: "17/10/2022",
-    cantidad: 15,
+    cantidad: "15 unidades",
     tipo: "Estandar",
     estado: "Enviado",
   },
   {
-    codigo: "HEMO003",
-    nombre: "Trimetafán",
+    codigo: "HEMO002",
+    nombre: "Factor VIII UNC",
     fecha: "10/10/2022",
-    cantidad: 50,
+    cantidad: "13 unidades",
     tipo: "Urgencia",
     estado: "Recibido",
   },
@@ -227,7 +227,7 @@ export default function PedidosSatelite() {
               ></RadioButtonCheckedIcon>
               <Typography variant="p" component="span">
                 Cantidad de pedidos recibidos este mes:{" "}
-                <b style={{ color: "#008180" }}>15</b>
+                <b style={{ color: "#008180" }}>2</b>
               </Typography>
             </Box>
           </Grid>

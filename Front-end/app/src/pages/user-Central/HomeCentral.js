@@ -56,39 +56,19 @@ const modalStyle = {
 
 const barData = [
   {
-    name: "Ibuprofeno",
-    sep: 4000,
-    oct: 2400,
+    name: "Factor VII Octapharma",
+    sep: 1312,
+    oct: 874,
   },
   {
-    name: "Diclofenac",
-    sep: 3000,
-    oct: 1398,
+    name: "Factor VIII UNC",
+    sep: 1740,
+    oct: 1390,
   },
   {
-    name: "Alplax",
-    sep: 2000,
-    oct: 9800,
-  },
-  {
-    name: "Acebrofilina",
-    sep: 2780,
-    oct: 3908,
-  },
-  {
-    name: "Aceclofenaco",
-    sep: 1890,
-    oct: 4800,
-  },
-  {
-    name: "Ibupirac",
-    sep: 2390,
-    oct: 3800,
-  },
-  {
-    name: "Anaflex",
-    sep: 3490,
-    oct: 4300,
+    name: "Factor VIII Koate",
+    sep: 932,
+    oct: 1037,
   },
 ];
 
@@ -105,19 +85,11 @@ const pieData = [
 const rows = [
   {
     hospital: "Rivadavia",
-    medicamentos: "Metformina, Ibup...",
+    medicamentos: "Factor VIII Koate, Fac...",
   },
   {
     hospital: "Udaondo",
-    medicamentos: "Amoxicilina, Lami..",
-  },
-  {
-    hospital: "Pirovano",
-    medicamentos: "Ibuprofeno, Amox...",
-  },
-  {
-    hospital: "Argerich",
-    medicamentos: "Ibuprofeno, Metf...",
+    medicamentos: "Factor VIII UNC",
   },
 ];
 
@@ -189,8 +161,9 @@ export default function HomeCentral() {
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
-              ¿Cuántos <b style={{ color: "#008180" }}>medicamentos</b> se
-              usaron este mes y cuantos el mes pasado?
+              Comparativa de uso
+              <b style={{ color: "#008180" }}> medicamentos</b> entre mes actual
+              y mes pasado
             </Typography>
             <BarChart
               width={650}
@@ -208,8 +181,8 @@ export default function HomeCentral() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="sep" fill="#008180" unit={" comprimidos"} />
-              <Bar dataKey="oct" fill="#E93030" unit={" comprimidos"} />
+              <Bar dataKey="sep" fill="#008180" unit={" unidades"} />
+              <Bar dataKey="oct" fill="#E93030" unit={" unidades"} />
             </BarChart>
           </Grid>
           <Grid item xs={2}>
@@ -251,8 +224,8 @@ export default function HomeCentral() {
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
-              Cuantos pacientes hay en proporcion en cada hospital en{" "}
-              <b style={{ color: "#008180" }}>Noviembre</b>
+              Proporción de pacientes por hospotal hospital en{" "}
+              <b style={{ color: "#008180" }}>Diciembre</b>
             </Typography>
             <PieChart width={700} height={400}>
               <Pie
@@ -286,13 +259,11 @@ export default function HomeCentral() {
           </Typography>
           <Divider sx={{ marginTop: 1, marginBottom: 2 }} />
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Metformina: <b style={{ color: "#FF0000" }}>16 comprimidos</b>
+            Factor VIII Koate: <b style={{ color: "#FF0000" }}>5 unidades</b>
           </Typography>
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Ibuprofeno: <b style={{ color: "#FF0000" }}>12 comprimidos</b>
-          </Typography>
-          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Amoxicilina: <b style={{ color: "#FF0000" }}>10 comprimidos</b>
+            Factor VII Octapharma:{" "}
+            <b style={{ color: "#FF0000" }}>10 unidades</b>
           </Typography>
           <br />
           <Container sx={{ textAlign: "center" }}>

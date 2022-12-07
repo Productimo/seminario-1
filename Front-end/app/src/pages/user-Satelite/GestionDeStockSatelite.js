@@ -129,27 +129,17 @@ const rows = [
   {
     codigo: "HEMO001",
     nombre: "Factor VIII Octapharma",
-    stock: 55,
+    stock: 10,
   },
   {
     codigo: "HEMO002",
-    nombre: "Ivermectina",
+    nombre: "Factor VIII UNC",
     stock: 33,
   },
   {
     codigo: "HEMO003",
-    nombre: "Ramipril",
-    stock: 10,
-  },
-  {
-    codigo: "HEMO004",
-    nombre: "Refrianex",
-    stock: 29,
-  },
-  {
-    codigo: "HEMO005",
-    nombre: "Lexotiroxina",
-    stock: 35,
+    nombre: "Factor VIII Koate",
+    stock: 5,
   },
 ];
 
@@ -223,8 +213,8 @@ export default function GestionDeStockSatelite() {
               ></RadioButtonCheckedIcon>
               <Typography variant="p" component="span">
                 <a href="#" onClick={() => setStockOpen(true)}>
-                  Medicamentos por debajo del minimo de stock: Ramipril,
-                  Lexotiroxina..
+                  Medicamentos por debajo del minimo de stock: Factor VIII
+                  Koate, Fac...
                 </a>
               </Typography>
             </Box>
@@ -279,14 +269,14 @@ export default function GestionDeStockSatelite() {
                       <TableCell>{row.nombre}</TableCell>
                       <TableCell>
                         {row.stock}
-                        {row.stock === 29 && (
+                        {row.stock === 10 && (
                           <Tooltip title="Cerca del limite de seguridad">
                             <IconButton>
                               <WarningIcon sx={{ color: "#E7BE30" }} />
                             </IconButton>
                           </Tooltip>
                         )}
-                        {row.stock === 10 && (
+                        {row.stock === 5 && (
                           <Tooltip title="Por debajo del limite de seguridad">
                             <IconButton>
                               <ErrorOutlineIcon sx={{ color: "#E93030" }} />
@@ -316,13 +306,11 @@ export default function GestionDeStockSatelite() {
           </Typography>
           <Divider sx={{ marginTop: 1, marginBottom: 2 }} />
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Metformina: <b style={{ color: "#FF0000" }}>16 comprimidos</b>
+            Factor VIII Koate: <b style={{ color: "#FF0000" }}>5 unidades</b>
           </Typography>
           <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Ibuprofeno: <b style={{ color: "#FF0000" }}>12 comprimidos</b>
-          </Typography>
-          <Typography variant="p" component="p" sx={{ marginBottom: "5px" }}>
-            Amoxicilina: <b style={{ color: "#FF0000" }}>10 comprimidos</b>
+            Factor VII Octapharma:{" "}
+            <b style={{ color: "#FF0000" }}>10 unidades</b>
           </Typography>
           <br />
           <Container sx={{ textAlign: "center" }}>

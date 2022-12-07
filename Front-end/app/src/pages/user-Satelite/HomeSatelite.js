@@ -51,81 +51,53 @@ const modalStyle = {
 
 const barData = [
   {
-    name: "Ibuprofeno",
-    sep: 4000,
-    oct: 2400,
+    name: "Factor VII Octapharma",
+    sep: 400,
+    oct: 240,
   },
   {
-    name: "Diclofenac",
-    sep: 3000,
-    oct: 1398,
+    name: "Factor VIII UNC",
+    sep: 300,
+    oct: 139,
   },
   {
-    name: "Alplax",
-    sep: 2000,
-    oct: 9800,
-  },
-  {
-    name: "Acebrofilina",
-    sep: 2780,
-    oct: 3908,
-  },
-  {
-    name: "Aceclofenaco",
-    sep: 1890,
-    oct: 4800,
-  },
-  {
-    name: "Ibupirac",
-    sep: 2390,
-    oct: 3800,
-  },
-  {
-    name: "Anaflex",
-    sep: 3490,
-    oct: 4300,
+    name: "Factor VIII Koate",
+    sep: 200,
+    oct: 980,
   },
 ];
 
 const rows = [
   {
-    medicamento: "Ibuprofeno",
-    stock: "3 cajas",
+    medicamento: "Factor VIII Koate",
+    stock: "5 unidades",
   },
   {
-    medicamento: "Anaflex",
-    stock: "5 cajas",
-  },
-  {
-    medicamento: "Diclofenac",
-    stock: "15 comprimidos",
-  },
-  {
-    medicamento: "Metformina",
-    stock: "19 comprimidos",
+    medicamento: "Factor VII Octapharma",
+    stock: "10 unidades",
   },
 ];
 
 const rowsPacientes = [
   {
     paciente: "Franco Lorem",
-    medicamento: "Alplax",
-    cantidad: "6 unidades",
+    medicamento: "Factor VIII Koate",
+    cantidad: "1 unidad",
   },
   {
     paciente: "Juan Battaglia",
-    medicamento: "Diclofenac",
-    cantidad: "10 unidades",
+    medicamento: "Factor VII Octapharma",
+    cantidad: "2 unidades",
   },
   {
     paciente: "Timoteo Guerini",
-    medicamento: "Metformina",
-    cantidad: "17 unidades",
+    medicamento: "Factor VIII UNC",
+    cantidad: "2 unidades",
   },
   {
     paciente: "Liliana Rodriguez",
-    medicamento: "Ibuprofeno",
-    cantidad: "11 unidades",
+    medicamento: "Factor VII Octapharma",
+    cantidad: "1 unidad",
   },
 ];
 
@@ -192,8 +164,9 @@ export default function HomeSatelite() {
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
-              ¿Cuántos <b style={{ color: "#008180" }}>medicamentos</b> se
-              usaron este mes y cuantos el mes pasado?
+              Comparativa de uso
+              <b style={{ color: "#008180" }}> medicamentos</b> entre mes actual
+              y mes pasado
             </Typography>
             <BarChart
               width={650}
@@ -211,8 +184,8 @@ export default function HomeSatelite() {
               <YAxis />
               <Tooltip />
               <Legend />
-              <Bar dataKey="sep" fill="#008180" unit={" comprimidos"} />
-              <Bar dataKey="oct" fill="#E93030" unit={" comprimidos"} />
+              <Bar dataKey="sep" fill="#008180" unit={" unidades"} />
+              <Bar dataKey="oct" fill="#E93030" unit={" unidades"} />
             </BarChart>
           </Grid>
           <Grid item xs={2}>
@@ -221,7 +194,7 @@ export default function HomeSatelite() {
               component="div"
               sx={{ paddingBottom: "25px", paddingTop: "10px" }}
             >
-              Últimos 10 <b style={{ color: "#008180" }}>pacientes</b> atendidos
+              Últimos <b style={{ color: "#008180" }}>pacientes</b> atendidos
             </Typography>
             <br />
             <br />

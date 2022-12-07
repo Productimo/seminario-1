@@ -63,7 +63,7 @@ export default function MenuDrawerSatelite() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Hemodinamia
+            Factor VIII
           </Typography>
         </Toolbar>
       </AppBar>
