@@ -21,10 +21,10 @@ public class Historial {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@Column(name = "id_stock")
+	@Column(name = "id_stock", insertable = false,  updatable = false)
 	private Long idStock;
 	
-	@Column(name = "id_pedido")
+	@Column(name = "id_pedido", insertable = false,  updatable = false)
 	private Long idPedido;
 	
 	@ManyToOne

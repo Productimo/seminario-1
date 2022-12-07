@@ -79,7 +79,7 @@ export default function Login() {
         >
           <Toolbar>
             <Typography variant="h6" noWrap component="div">
-              Hemodinamia
+              Factor VIII
             </Typography>
           </Toolbar>
         </AppBar>

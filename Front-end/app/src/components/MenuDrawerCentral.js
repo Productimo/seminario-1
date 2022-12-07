@@ -15,7 +15,7 @@ import AssessmentIcon from "@mui/icons-material/Assessment";
 import { Divider, ListItem, Typography } from "@mui/material";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
+import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 
 const drawerWidth = 280;
 
@@ -37,18 +37,18 @@ export default function MenuDrawerCentral() {
     window.location.href = "/";
   };
 
-  const goToCargarNuevoPedido = ()=>{
+  const goToCargarNuevoPedido = () => {
     let path = "/CargarNuevoPedido";
     navigate(path);
-  }
-  const goToHistorialDeAtenciones = ()=>{
+  };
+  const goToHistorialDeAtenciones = () => {
     let path = "/HistorialDeAtenciones";
     navigate(path);
-  }
-  const goToGestionDeStockCentral = ()=>{
+  };
+  const goToGestionDeStockCentral = () => {
     let path = "/GestionDeStockCentral";
     navigate(path);
-  }
+  };
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -61,7 +61,7 @@ export default function MenuDrawerCentral() {
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
-            Hemodinamia
+            Factor VIII
           </Typography>
         </Toolbar>
       </AppBar>
@@ -124,8 +124,6 @@ export default function MenuDrawerCentral() {
               </ListItemIcon>
               <ListItemText primary="Cerrar sesión" />
             </ListItemButton>
-           
-
           </List>
         </Box>
       </Drawer>

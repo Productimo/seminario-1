@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Container } from "@mui/system";
-import MenuDrawerCentral from "../../components/MenuDrawerCentral"
+import MenuDrawerCentral from "../../components/MenuDrawerCentral";
 import { Box } from "@mui/system";
 import { Divider, Typography, Select } from "@mui/material";
 import { Grid, TextField } from "@mui/material";
@@ -135,26 +135,26 @@ const rows = [
   {
     Hospital: "Argerich",
     codigo: "HEMO002",
-    nombre: "Ivermectina",
-    stock: 33,
+    nombre: "Factor VIII UNC",
+    stock: 20,
   },
   {
-    Hospital: "Garrahan",
+    Hospital: "Rivadavia",
     codigo: "HEMO001",
     nombre: "Factor VIII Octapharma",
     stock: 10,
   },
   {
-    Hospital: "Garrahan",
+    Hospital: "Rivadavia",
     codigo: "HEMO002",
-    nombre: "Lexotiroxina",
-    stock: 29,
+    nombre: "Factor VIII UNC",
+    stock: 33,
   },
   {
-    Hospital: "Pirovano",
-    codigo: "HEMO001",
-    nombre: "Factor VIII Octapharma",
-    stock: 35,
+    Hospital: "Rivadavia",
+    codigo: "HEMO003",
+    nombre: "Factor VIII Koate",
+    stock: 5,
   },
 ];
 
@@ -168,7 +168,7 @@ export default function GestionDeStockCentral() {
     >
       <MenuDrawerCentral />
       <Box style={boxShadowStyle}>
-      <Typography
+        <Typography
           variant="h1"
           component="div"
           sx={{ paddingBottom: "25px", paddingTop: "10px", color: "#008180" }}
@@ -176,9 +176,6 @@ export default function GestionDeStockCentral() {
           Stock
         </Typography>
         <Grid container spacing={2} columns={2}>
-
-          
-
           <Grid item xs={2} sx={{ display: "flex", justifyContent: "center" }}>
             <ComposedChart
               width={1000}
@@ -217,7 +214,6 @@ export default function GestionDeStockCentral() {
               />
             </ComposedChart>
           </Grid>
-          
         </Grid>
 
         <Grid container spacing={2} columns={2} sx={{ marginTop: "40px" }}>
@@ -230,10 +226,18 @@ export default function GestionDeStockCentral() {
                       backgroundColor: "#f5f5f5",
                     }}
                   >
-                    <TableCell><b>Hospital</b></TableCell>
-                    <TableCell><b>Código de medicamento</b></TableCell>
-                    <TableCell><b>Nombre de medicamento</b></TableCell>
-                    <TableCell><b>Stock</b></TableCell>
+                    <TableCell>
+                      <b>Hospital</b>
+                    </TableCell>
+                    <TableCell>
+                      <b>Código de medicamento</b>
+                    </TableCell>
+                    <TableCell>
+                      <b>Nombre de medicamento</b>
+                    </TableCell>
+                    <TableCell>
+                      <b>Stock</b>
+                    </TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>
@@ -252,14 +256,14 @@ export default function GestionDeStockCentral() {
                       <TableCell>{row.nombre}</TableCell>
                       <TableCell>
                         {row.stock}
-                        {row.stock === 29 && (
+                        {row.stock === 10 && (
                           <Tooltip title="Cerca del limite de seguridad">
                             <IconButton>
                               <WarningIcon sx={{ color: "#E7BE30" }} />
                             </IconButton>
                           </Tooltip>
                         )}
-                        {row.stock === 10 && (
+                        {row.stock === 5 && (
                           <Tooltip title="Por debajo del limite de seguridad">
                             <IconButton>
                               <ErrorOutlineIcon sx={{ color: "#E93030" }} />

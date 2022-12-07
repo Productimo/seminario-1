@@ -12,7 +12,7 @@ import FormControl from "@mui/material/FormControl";
 import InputAdornment from "@mui/material/InputAdornment";
 import { Divider, Typography, Select } from "@mui/material";
 import { useState } from "react";
-import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
+import ProductionQuantityLimitsIcon from "@mui/icons-material/ProductionQuantityLimits";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -20,8 +20,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import Paper from "@mui/material/Paper";
 import TableRow from "@mui/material/TableRow";
-import DeleteIcon from "@mui/icons-material/Delete"
-import AddIcon from '@mui/icons-material/Add';
+import DeleteIcon from "@mui/icons-material/Delete";
+import AddIcon from "@mui/icons-material/Add";
 import { Add } from "@mui/icons-material";
 import uuid from "react-uuid";
 
@@ -52,7 +52,7 @@ const titleStyle = {
   top: "15.77%",
   bottom: "82%",
 
-  fontFamily: 'Roboto',
+  fontFamily: "Roboto",
   fontStyle: "normal",
   fontWeight: "500",
   fontSize: "96px",
@@ -121,13 +121,18 @@ export default function CargarNuevoPedido(){
     return(
     <Container
       sx={{ display: "flex", minWidth: "100%", padding: "20px" }}
-      disableGutters>
-        <MenuDrawerCentral/>
-        <Box style={boxShadowStyle}>
+      disableGutters
+    >
+      <MenuDrawerCentral />
+      <Box style={boxShadowStyle}>
         <Typography
           variant="h1"
           component="div"
-          sx={{ paddingBottom: "25px", paddingTop: "10px", color:"rgba(0, 129, 128, 0.87)" }}
+          sx={{
+            paddingBottom: "25px",
+            paddingTop: "10px",
+            color: "rgba(0, 129, 128, 0.87)",
+          }}
         >
           Cargar nuevo pedido
         </Typography>
@@ -143,7 +148,9 @@ export default function CargarNuevoPedido(){
               <MenuItem value="" default disabled>
                 <em>Hospital *</em>
               </MenuItem>
+              <MenuItem value={"Rivadavia"}>Rivadavia</MenuItem>
               <MenuItem value={"Garrahan"}>Garrahan</MenuItem>
+              <MenuItem value={"Udaondo"}>Udaondo</MenuItem>
             </Select>
         </FormControl>
 
@@ -158,7 +165,9 @@ export default function CargarNuevoPedido(){
                     <MenuItem value="" default disabled>
                       <em>Medicamento *</em>
                     </MenuItem>
-                    <MenuItem value={"Ibuprofeno"}>Ibuprofeno</MenuItem>
+                    <MenuItem value={"CHS0001"}>HEM0001</MenuItem>
+                    <MenuItem value={"CHS0002"}>HEM0002</MenuItem>
+                    <MenuItem value={"CHS0003"}>HEM0003</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -232,6 +241,11 @@ export default function CargarNuevoPedido(){
                 </Button>
               </Grid>
 
+          <Grid item xs={4} sx={{ textAlign: "center" }}>
+            <Button variant="contained" onClick={checkData}>
+              CONTINUAR
+            </Button>
+          </Grid>
         </Grid>
 
         <Snackbar
@@ -286,5 +300,5 @@ export default function CargarNuevoPedido(){
       </Modal>
 
     </Container>
-    )
+  );
 }

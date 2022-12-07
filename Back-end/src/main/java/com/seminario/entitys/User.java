@@ -19,10 +19,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "id_hospital", unique = true)
+    @Column(name = "id_hospital", unique = true, insertable = false,  updatable = false)
     private Long idHospital;
     
-    @Column(name = "id_rol", unique = true)
+    @Column(name = "id_rol", unique = true, insertable = false,  updatable = false)
     private Long idRol;
     
     @Column(name = "username", unique = true)

@@ -123,7 +123,9 @@ export default function PedidoDeEmergenciaSatelite() {
                 <MenuItem value="" default disabled>
                   <em>Medicamento *</em>
                 </MenuItem>
-                <MenuItem value={"Ibuprofeno"}>Ibuprofeno</MenuItem>
+                <MenuItem value={"CHS0001"}>HEM0001</MenuItem>
+                <MenuItem value={"CHS0002"}>HEM0002</MenuItem>
+                <MenuItem value={"CHS0003"}>HEM0003</MenuItem>
               </Select>
             </FormControl>
           </Grid>

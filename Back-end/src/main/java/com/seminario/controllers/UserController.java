@@ -10,6 +10,8 @@ import com.seminario.services.UserService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,14 +23,11 @@ import java.util.Map;
 @Api(tags = "Users")
 public class UserController {
 
-    private final UserService userService;
-    private final AuthService authService;
-    
-    public UserController(UserService userService, AuthService authService) {
-		super();
-		this.userService = userService;
-		this.authService = authService;
-	}
+	@Autowired
+    private UserService userService;
+	
+	@Autowired
+    private AuthService authService;
 
 	@PostMapping("/singup")
     @ApiOperation(value = "User Register")
